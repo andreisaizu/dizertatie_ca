@@ -1,11 +1,11 @@
-<mat-sidenav-container>
+<mat-sidenav-container style="height: 400px;">
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
     <div class="d-flex flex-column">
       <div class="d-flex">
         <app-new-variable (newVariableEmitter)="onAddedNewVariable($event)"></app-new-variable>
       </div>
       <div class="d-flex">
-        <app-new-if></app-new-if>
+        <app-new-if (newIfEmitter)="onAddedNewIf($event)"></app-new-if>
       </div>
       <div class="d-flex">
         <app-new-for></app-new-for>
@@ -18,7 +18,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+    <p><button mat-button (click)="sidenav.toggle()">Add new components...</button></p>
     <!-- <app-frame></app-frame> -->
     <div class="d-flex flex-column">
       <app-new-variable-list [newVariables]="newVariables" (editedVariableListEmitter)="onEditVariableList($event)"></app-new-variable-list>

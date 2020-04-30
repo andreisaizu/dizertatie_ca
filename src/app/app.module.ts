@@ -19,6 +19,8 @@ import { NewIfComponent } from './new-component/new-if/new-if.component';
 import { NewWhileComponent } from './new-component/new-while/new-while.component';
 import { NewVariableListComponent } from './new-component/new-variable-list/new-variable-list.component';
 import { EditDialogVariableComponent } from './structures/edit-dialog-variable/edit-dialog-variable.component';
+import { NewIfListComponent } from './new-component/new-if-list/new-if-list.component';
+import { IfComponent } from './structures/if/if.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { EditDialogVariableComponent } from './structures/edit-dialog-variable/e
     NewIfComponent,
     NewWhileComponent,
     NewVariableListComponent,
-    EditDialogVariableComponent
+    EditDialogVariableComponent,
+    NewIfListComponent,
+    IfComponent
   ],
   imports: [
     BrowserModule,

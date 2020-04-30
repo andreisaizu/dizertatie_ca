@@ -9,8 +9,6 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./new-variable.component.css']
 })
 export class NewVariableComponent implements OnInit {
-
-  variable:Variable = new Variable();
   constructor() { }
 
   @Output() newVariableEmitter = new EventEmitter<Variable>();
