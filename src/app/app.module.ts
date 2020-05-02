@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule, MatCardModule,MatTooltipModule, MatDialogModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatCardModule,MatTooltipModule, MatDialogModule, MatButtonModule } from '@angular/material';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -21,6 +21,36 @@ import { NewVariableListComponent } from './new-component/new-variable-list/new-
 import { EditDialogVariableComponent } from './structures/edit-dialog-variable/edit-dialog-variable.component';
 import { NewIfListComponent } from './new-component/new-if-list/new-if-list.component';
 import { IfComponent } from './structures/if/if.component';
+import { InstructionComponent } from './structures/instruction/instruction.component';
+import { ComplexInstructionComponent } from './structures/complex-instruction/complex-instruction.component';
+import { AbstractInstructionComponent } from './structures/abstract-instruction/abstract-instruction.component';
+import { NewVariableDialogComponent } from './structures/new-variable-dialog/new-variable-dialog.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { MaterialModule } from './material.module';
+import { IfLessonComponent } from './pages/lessons/if-lesson/if-lesson.component';
+import { ForLessonComponent } from './pages/lessons/for-lesson/for-lesson.component';
+import { WhileLessonComponent } from './pages/lessons/while-lesson/while-lesson.component';
+import { VariableLessonComponent } from './pages/lessons/variable-lesson/variable-lesson.component';
+import { RouterModule, Routes } from '@angular/router';
+import { VariableChallengeComponent } from './pages/challenges/variable-challenge/variable-challenge.component';
+
+const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: '/home',
+  //   component: HomePageComponent
+  // },
+  {
+    path: 'lessons/variable',
+    component: VariableLessonComponent
+  },
+  {
+    path: 'challenges/variable',
+    component: VariableChallengeComponent
+  }
+];
+
 
 @NgModule({
   declarations: [
@@ -35,9 +65,20 @@ import { IfComponent } from './structures/if/if.component';
     NewVariableListComponent,
     EditDialogVariableComponent,
     NewIfListComponent,
-    IfComponent
+    IfComponent,
+    InstructionComponent,
+    ComplexInstructionComponent,
+    AbstractInstructionComponent,
+    NewVariableDialogComponent,
+    HomePageComponent,
+    IfLessonComponent,
+    ForLessonComponent,
+    WhileLessonComponent,
+    VariableLessonComponent,
+    VariableChallengeComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     DragDropModule,
     BrowserAnimationsModule,
@@ -48,10 +89,14 @@ import { IfComponent } from './structures/if/if.component';
     MatSidenavModule,
     MatCardModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   entryComponents: [EditDialogVariableComponent],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

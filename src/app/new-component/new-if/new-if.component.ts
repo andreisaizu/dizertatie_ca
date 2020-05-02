@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { If } from '../../common/if';
-import { Condition } from '../../common/condition';
+import { IfCondition } from '../../common/ifCondition';
 import { IfConfitionSymbolEnum } from '../../common/ifConditionSymbolEnum';
 
 @Component({
@@ -20,8 +20,11 @@ export class NewIfComponent implements OnInit {
 
   onAddIfStructure(){
     var newIf:If = new If();
-    var newCondition:Condition = new Condition();
+    var newCondition:IfCondition = new IfCondition();
     newIf.id = uuid();
+    newCondition.leftMember=2;
+    newCondition.rightMember=3;
+    newIf.condition= newCondition;
     newCondition.conditionSymbol = IfConfitionSymbolEnum.Equals;
     this.newIfEmitter.emit(newIf);
   }

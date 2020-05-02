@@ -1,0 +1,6 @@
+<div *ngIf="abstractInstruction.component instanceof If">
+   <app-if [newIf] = "abstractInstruction.component"></app-if>
+</div>
+<div *ngIf="abstractInstruction.component instanceof Variable">
+    <app-variable [variable] = "abstractInstruction.component"></app-variable>
+</div>

@@ -1,0 +1,6 @@
+<div *ngIf="abstractInstruction instanceof ComplexInstruction">
+    <app-complex-instruction [complexInstruction]="abstractInstruction" cdkDrag></app-complex-instruction>
+</div>
+<div *ngIf="abstractInstruction instanceof Instruction">
+    <app-instruction [abstractInstruction]="abstractInstruction" cdkDrag></app-instruction>
+</div>

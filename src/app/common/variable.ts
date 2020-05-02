@@ -1,8 +1,9 @@
 import { VariableType } from "./variableTypeEnum";
+import { InstructionComp } from "./component";
 
-export class Variable{
-    id:Number;
-    name:String;
-    value:String;
-    type:VariableType;
+export class Variable extends InstructionComp {
+    id: Number;
+    name: String;
+    value: String;
+    type: VariableType;
 }

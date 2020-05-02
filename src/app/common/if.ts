@@ -1,6 +1,7 @@
-import { Condition } from "./condition";
+import { IfCondition } from "./ifCondition";
+import { InstructionComp } from "./component";
 
-export class If {
+export class If extends InstructionComp{
     id:Number;
-    condition:Condition;
+    condition:IfCondition;
 }

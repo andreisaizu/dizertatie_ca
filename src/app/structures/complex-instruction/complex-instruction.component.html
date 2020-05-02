@@ -1,0 +1,5 @@
+<app-instruction [abstractInstruction]="complexInstruction.baseInstruction"></app-instruction>
+{{ '{' }}
+<app-instruction *ngFor="let subInstruction of complexInstruction.instructionList" [instruction]="subInstruction" cdkDrag>
+</app-instruction>
+{{ '}' }}

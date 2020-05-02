@@ -14,14 +14,20 @@
         <app-new-while></app-new-while>
       </div>
     </div>
-
   </mat-sidenav>
 
   <mat-sidenav-content>
     <p><button mat-button (click)="sidenav.toggle()">Add new components...</button></p>
     <!-- <app-frame></app-frame> -->
     <div class="d-flex flex-column">
-      <app-new-variable-list [newVariables]="newVariables" (editedVariableListEmitter)="onEditVariableList($event)"></app-new-variable-list>
+      <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <app-abstract-instruction *ngFor="let abstractInstruction of instructionList" [abstractInstruction]="abstractInstruction" cdkDrag></app-abstract-instruction>
+      </div>
+    </div>
+    <div class="example-box" cdkDrag>
+      Drag me around
     </div>
   </mat-sidenav-content>
+
+
 </mat-sidenav-container>

@@ -1,1 +1,3 @@
-<app-if *ngFor="let if of newIfs" [if]="if" (editedIfListEmitter)="onEditedIfStructure($event)"></app-if>
+<div>
+<app-if *ngFor="let newIf of newIfs" [newIf]="newIf" (editedIfListEmitter)="onEditedIfStructure($event)"></app-if>
+</div>

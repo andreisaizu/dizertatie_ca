@@ -1,6 +1,6 @@
 import { IfConfitionSymbolEnum } from "./ifConditionSymbolEnum";
 
-export class Condition{
+export class IfCondition{
     leftMember:Object;
     rightMember:Object;
     conditionSymbol:IfConfitionSymbolEnum;
