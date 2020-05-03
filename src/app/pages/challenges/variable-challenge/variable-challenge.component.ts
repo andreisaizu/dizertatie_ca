@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Challenge } from '../../../common/challenge/challenge';
+import { ChallengeItem } from '../../../common/challenge/challengeItem';
+import { Choice } from '../../../common/challenge/choice';
 
 @Component({
   selector: 'app-variable-challenge',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./variable-challenge.component.css']
 })
 export class VariableChallengeComponent implements OnInit {
+ 
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
+  
+
+  submit(): void {
+  }
 }
+
+

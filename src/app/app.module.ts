@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule, MatCardModule,MatTooltipModule, MatDialogModule, MatButtonModule } from '@angular/material';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -34,6 +33,10 @@ import { WhileLessonComponent } from './pages/lessons/while-lesson/while-lesson.
 import { VariableLessonComponent } from './pages/lessons/variable-lesson/variable-lesson.component';
 import { RouterModule, Routes } from '@angular/router';
 import { VariableChallengeComponent } from './pages/challenges/variable-challenge/variable-challenge.component';
+import { TrueFalseComponent } from './common/challenge-types/true-false/true-false.component';
+import { SingleChoiceComponent } from './common/challenge-types/single-choice/single-choice.component';
+import { MultipleChoiceComponent } from './common/challenge-types/multiple-choice/multiple-choice.component';
+import { CorrectOrderComponent } from './common/challenge-types/correct-order/correct-order.component';
 
 const routes: Routes = [
   // {
@@ -75,21 +78,19 @@ const routes: Routes = [
     ForLessonComponent,
     WhileLessonComponent,
     VariableLessonComponent,
-    VariableChallengeComponent
+    VariableChallengeComponent,
+    TrueFalseComponent,
+    SingleChoiceComponent,
+    MultipleChoiceComponent,
+    CorrectOrderComponent
   ],
   imports: [
     MaterialModule,
     BrowserModule,
     DragDropModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatTooltipModule,
-    MatDialogModule,
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)

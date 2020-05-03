@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Variable } from 'src/app/common/variable';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { EditDialogVariableComponent } from '../edit-dialog-variable/edit-dialog-variable.component';
 
 @Component({
