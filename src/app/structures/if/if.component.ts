@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Variable } from '../../common/variable';
 import { MatDialog } from '@angular/material/dialog';
-import { EditDialogVariableComponent } from '../edit-dialog-variable/edit-dialog-variable.component';
 import { If } from '../../common/if';
 import { IfCondition } from '../../common/ifCondition';
 
@@ -17,18 +16,5 @@ export class IfComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(EditDialogVariableComponent, {
-      width: '250px',
-      data: { ifStruct: this.newIf }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      ifCondition: IfCondition;
-      this.newIf.condition = result.newValue;
-      this.editIfEmitter.emit(this.newIf);
-    });
   }
 }

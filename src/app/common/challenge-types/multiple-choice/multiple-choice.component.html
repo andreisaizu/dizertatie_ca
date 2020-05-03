@@ -1,1 +1,3 @@
-<p>multiple-choice works!</p>
+<mat-radio-group aria-label="Choose correct answer" *ngFor="let challengeItemTask of challengeItem.challengeItemTaskList">
+  <mat-radio-button *ngFor="let choice of challengeItemTask.choiceList">Option 1</mat-radio-button>
+</mat-radio-group>

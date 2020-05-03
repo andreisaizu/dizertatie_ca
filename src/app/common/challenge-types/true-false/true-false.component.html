@@ -1,24 +1,23 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+<table mat-table [dataSource]="challengeItem.challengeItemTaskList" class="mat-elevation-z2">
     <div class="d-flex pr-4">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let challenge"> {{challenge.orderId}} </td>
+        <td mat-cell *matCellDef="let challengeItemTask"> 1 </td>
       </ng-container>
     </div>
 
     <div class="d-flex pr-4">
       <ng-container matColumnDef="question">
         <th mat-header-cell *matHeaderCellDef> Question </th>
-        <td mat-cell *matCellDef="let challenge"> {{challenge.question}} </td>
+        <td mat-cell *matCellDef="let challengeItemTask"> {{challengeItemTask.question}} </td>
       </ng-container>
     </div>
 
-
     <ng-container matColumnDef="answer">
       <th mat-header-cell *matHeaderCellDef> True or false </th>
-      <td mat-cell *matCellDef="let challenge">
+      <td mat-cell *matCellDef="let challengeItemTask">
         <mat-radio-group aria-label="True or false">
-          <mat-radio-button *ngFor="let choice of challenge.choiceList">Option 1</mat-radio-button>
+          <mat-radio-button *ngFor="let choice of challengeItemTask.choiceList">Option 1</mat-radio-button>
         </mat-radio-group>
       </td>
     </ng-container>

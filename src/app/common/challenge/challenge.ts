@@ -1,6 +1,6 @@
 import { ChallengeItem } from "./challengeItem";
 
 export class Challenge {
-    challengeId:number;
+    id:number;
     challengeItemList:Array<ChallengeItem>;
 }

@@ -1,1 +1,3 @@
-<p>correct-order works!</p>
+<div cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-card style="cursor: pointer;" *ngFor="let movie of movies" cdkDrag>{{movie}}</mat-card>
+  </div>
