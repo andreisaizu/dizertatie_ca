@@ -18,7 +18,7 @@ export class VariableChallengeComponent implements OnInit {
   constructor(private challengesService: ChallengesService) { }
 
   ngOnInit(): void {
-    this.challengesService.getChallengeByTemplate('SINGLE_CHOICE').subscribe(result => {
+    this.challengesService.getVariableChallenge().subscribe(result => {
       this.challenge = result;
     });
 
@@ -27,7 +27,7 @@ export class VariableChallengeComponent implements OnInit {
   newFunction(): void {
     let challengeItemList: Array<ChallengeItem> = new Array<ChallengeItem>();
 
-    let challengeItem: MultipleChoiceChallenge = new MultipleChoiceChallenge();
+    let challengeItem: SingleChoiceChallenge = new SingleChoiceChallenge();
     let choice1: Choice = new Choice();
     let choice2: Choice = new Choice();
     let challengeItemTaskChoiceList: Array<Choice> = new Array<Choice>();
