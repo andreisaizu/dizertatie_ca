@@ -1,20 +1,20 @@
 <div>Variable challenge</div>
 
 <div *ngFor="let challengeItem of challenge.challengeItemList">
-    <div *ngIf="challengeItem instanceof SingleChoiceChallenge">
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'SingleChoiceChallenge')">
         <app-single-choice [challengeItem]="challengeItem" class="p-2"></app-single-choice>
     </div>
     <mat-divider class="my-4"></mat-divider>
-    <div *ngIf="challengeItem instanceof TrueFalseChallenge">
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'TrueFalseChallenge')">
         <app-true-false [challengeItem]="challengeItem" class="p-2">
         </app-true-false>
     </div>
     <mat-divider class="my-4"></mat-divider>
-    <div *ngIf="challengeItem instanceof MultipleChoiceChallenge">
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'MultipleChoiceChallenge')">
         <app-multiple-choice [challengeItem]="challengeItem" class="p-2"></app-multiple-choice>
     </div>
     <mat-divider class="my-4"></mat-divider>
-    <div *ngIf="challengeItem instanceof CorrectOrderChallenge">
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'CorrectOrderChallenge')">
         <app-correct-order [challengeItem]="challengeItem" class="p-2"></app-correct-order>
     </div>
 </div>

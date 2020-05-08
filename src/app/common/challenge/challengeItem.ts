@@ -3,5 +3,10 @@ import { ChallengeItemTask } from "./challengeItemTask";
 
 export class ChallengeItem {
     id:number;
+    description:string;
     challengeItemTaskList:Array<ChallengeItemTask>;
+
+    constructor(){
+        this.challengeItemTaskList = new Array();
+    }
 }

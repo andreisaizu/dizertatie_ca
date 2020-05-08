@@ -1,5 +1,4 @@
-import { ChoiceChallenge } from "./choiceChallenge";
+import { ChallengeItem } from "./challengeItem";
 
-export class TrueFalseChallenge extends ChoiceChallenge {
-    
+export class TrueFalseChallenge extends ChallengeItem {
 }
