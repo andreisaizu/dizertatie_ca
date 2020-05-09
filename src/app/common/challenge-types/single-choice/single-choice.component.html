@@ -1,5 +1,7 @@
-<!-- <mat-radio-group aria-label="Choose correct answer" *ngFor="let challengeItemTask of challengeItem.challengeItemTaskList">
-    <mat-radio-button *ngFor="let choice of challengeItemTask.choiceList">Option 1</mat-radio-button>
-  </mat-radio-group> -->
+  <div class="h5">{{challengeItem.description}}</div>
+    <mat-radio-group *ngFor="let itemTask of challengeItem.challengeItemTaskList" [name]="itemTask.question" [value]="0" 
+    (ngModelChange)="onChoiceSelected()" [(ngModel)]="itemTask.selectedChoice">
+      <div>{{itemTask.question}}</div>
+      <mat-radio-button *ngFor="let choice of itemTask.choiceList" [value]="choice">{{choice.value}}</mat-radio-button>
+    </mat-radio-group>
 
-  {{challengeItem.description}}

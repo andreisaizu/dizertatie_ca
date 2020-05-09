@@ -3,6 +3,7 @@ import { ChallengeItemTask } from "./challengeItemTask";
 
 export class ChallengeItem {
     id:number;
+    challengeId:number;
     description:string;
     challengeItemTaskList:Array<ChallengeItemTask>;
 

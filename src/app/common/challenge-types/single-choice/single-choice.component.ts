@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Challenge } from '../../challenge/challenge';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ChallengeItem } from '../../challenge/challengeItem';
+import { ChallengeItemAnswer } from '../../challenge/challengeItemAnswer';
+import { ChallengeItemTask } from '../../challenge/challengeItemTask';
+import { ChallengeItemTaskAnswer } from '../../challenge/challengeItemTaskAnswer';
 
 @Component({
   selector: 'app-single-choice',
@@ -9,11 +11,30 @@ import { ChallengeItem } from '../../challenge/challengeItem';
 })
 export class SingleChoiceComponent implements OnInit {
 
+  itemAnswer: ChallengeItemAnswer = new ChallengeItemAnswer();
+
   @Input() challengeItem: ChallengeItem;
+
+  @Output() challengeItemAnswerEmitter = new EventEmitter<ChallengeItemAnswer>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onChoiceSelected(): void {
+    let x = 0;
+  }
+
+  submit() {
+    this.itemAnswer.challengeItemId = this.challengeItem.id;
+    this.challengeItem.challengeItemTaskList.forEach(itemTask => {
+      let challengeItemTaskAnswer: ChallengeItemTaskAnswer = new ChallengeItemTaskAnswer();
+      challengeItemTaskAnswer.challengeItemTaskId = itemTask.id;
+      challengeItemTaskAnswer.selectedChoicesIds.push(itemTask.selectedChoice.id);
+      this.itemAnswer.taskAnswers.push(challengeItemTaskAnswer);
+    });
+    this.challengeItemAnswerEmitter.emit(this.itemAnswer);
   }
 
 }
