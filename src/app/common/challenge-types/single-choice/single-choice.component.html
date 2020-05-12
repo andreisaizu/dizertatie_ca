@@ -1,7 +1,29 @@
-  <div class="h5">{{challengeItem.description}}</div>
-    <mat-radio-group *ngFor="let itemTask of challengeItem.challengeItemTaskList" [name]="itemTask.question" [value]="0" 
-    (ngModelChange)="onChoiceSelected()" [(ngModel)]="itemTask.selectedChoice">
-      <div>{{itemTask.question}}</div>
-      <mat-radio-button *ngFor="let choice of itemTask.choiceList" [value]="choice">{{choice.value}}</mat-radio-button>
-    </mat-radio-group>
+<div class="h5">{{challengeItem.description}}</div>
+ <br>
 
+<div *ngIf="!validated">
+  <mat-radio-group *ngFor="let itemTask of challengeItem.challengeItemTaskList" [name]="itemTask.question" [value]="0"
+    (ngModelChange)="onChoiceSelected()" [(ngModel)]="itemTask.selectedChoice">
+    <div>{{itemTask.question}}</div>
+    <mat-radio-button [color]="warn" *ngFor="let choice of itemTask.choiceList" [value]="choice">
+      {{choice.value}}</mat-radio-button>
+
+  </mat-radio-group><br><br>
+</div>
+
+<div *ngIf="validated">
+  <mat-radio-group *ngFor="let taskAnswer of validatedAnswer.taskAnswers" [name]="taskAnswer.question">
+    <div>{{taskAnswer.question}}</div>
+    <mat-radio-button [color]="warn" *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true
+      [checked]="choice.selected" [value]="choice.selected">
+      {{choice.value}}</mat-radio-button> <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+      src="../../../../assets/check.png"><img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+      src="../../../../assets/wrong.png">
+    <div *ngIf="!taskAnswer.correct">
+      Correct values:
+
+      <p *ngFor="let correctValue of taskAnswer.correctChoicesValues" style="color: red;">{{correctValue}}</p>
+      <p>{{taskAnswer.explanation}}</p>
+    </div>
+  </mat-radio-group>
+</div>

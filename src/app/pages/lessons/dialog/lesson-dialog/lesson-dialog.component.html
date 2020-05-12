@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Theoretical info</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput>
+        <div *ngIf="data.lessonType == 'VARIABLE'" style='width: 650px;'>
+            <app-variable-lesson [fromDialog]="true"></app-variable-lesson>
+        </div>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="d-flex align-items-end flex-column">
+    <div>
+        <button mat-button (click)="onYesClick()" cdkFocusInitial>Go to challenge!</button>
+    </div>
+</div>

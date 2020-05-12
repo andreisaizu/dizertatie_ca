@@ -9,5 +9,7 @@ import { FormControl } from '@angular/forms';
 export class AppComponent {
   title = 'dizertatie-ca';
 
+  // blankImage: string = '../assets/background.jpg';
+
   index = new FormControl('');
 }

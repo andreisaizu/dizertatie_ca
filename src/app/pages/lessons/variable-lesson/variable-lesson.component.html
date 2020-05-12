@@ -1,34 +1,41 @@
+<app-navbar></app-navbar>
+<br />
+<br />
+<br />
 <div class="pl-4">
 
-<h4>VARIABLE</h4>
-<br/>
-<br/>
-<br/>
-<p>The variable is nothing but a name given to a data value.</p>
-<p>As the name suggests, the contents of a variable can vary, i.e., you can change the value of a variable at any time.</p>
-<p>In JAVA, a variable is always defined with a data type. </p>
-<p>The following is the syntax variable declaration and initialization.</p>
-<p>A variable can be declared and initialized later or it can be declared and initialized at the same time. </p>
+    <h4>VARIABLE</h4>
+    <br />
+    <br />
+    <br />
+    <p>The variable is nothing but a name given to a data value.</p>
+    <p>As the name suggests, the contents of a variable can vary, i.e., you can change the value of a variable at any
+        time.</p>
+    <p>In JAVA, a variable is always defined with a data type. </p>
+    <p>The following is the syntax variable declaration and initialization.</p>
+    <p>A variable can be declared and initialized later or it can be declared and initialized at the same time. </p>
 
-<br/>
+    <br />
 
-<h6>Example: Variable Declaration</h6>
-<p>String message;// value can be assigned after it declared </p>
-<p>message = "Hello World!!";</p>
- 
-<h6>Example: Invalid Variable Assignment</h6>
-<p>String message = "Hello World!!";</p>
-<p>int i = message; // compile time error</p>
+    <h6>Example: Variable Declaration</h6>
+    <p>String message;// value can be assigned after it declared </p>
+    <p>message = "Hello World!!";</p>
 
-<br/>
-<h5>Points to Remember :</h5>
-<p>The variable is a name given to a data value.</p>
-<p>A variable holds the value of specific data type e.g string, int, float etc.</p>
-<p>A variable can be declared and initialized in separate statements and also in the single statement.</p>
-<p>The value of a variable can be changed at any time throughout out the program as long as it is accessible.</p>
-<p>Multiple variables can be defined separated by comma (,) in a single or multiple line till semicolon(;).</p>
-<p>A value must be assigned to a variable before using it otherwise it will give compile time error.</p>
+    <h6>Example: Invalid Variable Assignment</h6>
+    <p>String message = "Hello World!!";</p>
+    <p>int i = message; // compile time error</p>
 
-<button mat-menu-item [routerLink]="['/challenges/variable']">Go to challenges!</button>
+    <br />
+    <h5>Points to Remember :</h5>
+    <p>The variable is a name given to a data value.</p>
+    <p>A variable holds the value of specific data type e.g string, int, float etc.</p>
+    <p>A variable can be declared and initialized in separate statements and also in the single statement.</p>
+    <p>The value of a variable can be changed at any time throughout out the program as long as it is accessible.</p>
+    <p>Multiple variables can be defined separated by comma (,) in a single or multiple line till semicolon(;).</p>
+    <p>A value must be assigned to a variable before using it otherwise it will give compile time error.</p>
+
+    <div *ngIf="!fromDialog">
+        <button mat-menu-item (click)="goToChallenge()">Go to challenges!</button>
+    </div>
 
 </div>

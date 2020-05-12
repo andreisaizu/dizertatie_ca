@@ -30,7 +30,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
@@ -72,13 +72,18 @@ import { SingleChoiceComponent } from './common/challenge-types/single-choice/si
 import { MultipleChoiceComponent } from './common/challenge-types/multiple-choice/multiple-choice.component';
 import { CorrectOrderComponent } from './common/challenge-types/correct-order/correct-order.component';
 import { TestComponent } from './test/test.component';
+import { LessonDialogComponent } from './pages/lessons/dialog/lesson-dialog/lesson-dialog.component';
+import { SingleChoiceResultComponent } from './common/challenge-types/single-choice-result/single-choice-result.component';
+import { TrueFalseResultComponent } from './common/challenge-types/true-false-result/true-false-result.component';
+import { MultipleChoiceResultComponent } from './common/challenge-types/multiple-choice-result/multiple-choice-result.component';
+import { CorrectOrderResultComponent } from './common/challenge-types/correct-order-result/correct-order-result.component';
+import { NavbarComponent } from './common/navbar/navbar/navbar.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/home',
-  //   component: HomePageComponent
-  // },
+  {
+    path: 'home',
+    component: HomePageComponent
+  },
   {
     path: 'lessons/variable',
     component: VariableLessonComponent
@@ -117,7 +122,13 @@ const routes: Routes = [
     SingleChoiceComponent,
     MultipleChoiceComponent,
     CorrectOrderComponent,
-    TestComponent
+    TestComponent,
+    LessonDialogComponent,
+    SingleChoiceResultComponent,
+    TrueFalseResultComponent,
+    MultipleChoiceResultComponent,
+    CorrectOrderResultComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule,
@@ -164,7 +175,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [{
+    provide: MAT_RADIO_DEFAULT_OPTIONS,
+    useValue: { color: 'accent' },
+}],
   entryComponents: [],
   exports: [RouterModule],
   bootstrap: [AppComponent]

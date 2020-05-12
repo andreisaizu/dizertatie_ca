@@ -1,0 +1,9 @@
+<div class="h5">{{challengeItem.description}}</div>
+    <mat-radio-group *ngFor="let itemTask of challengeItem.challengeItemTaskList" [name]="itemTask.question" [value]="0" 
+    (ngModelChange)="onChoiceSelected()" [(ngModel)]="itemTask.selectedChoice">
+      <div>{{itemTask.question}}</div>
+      <div *ngIf="firstTime">
+        <mat-radio-button *ngFor="let choice of itemTask.choiceList" color="accent" [value]="choice">{{choice.value}}</mat-radio-button>
+      </div>
+      
+    </mat-radio-group>

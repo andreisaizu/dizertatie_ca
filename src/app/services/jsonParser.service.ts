@@ -77,6 +77,7 @@ export class JsonParserService {
         let taskChoice: Choice = new Choice();
         taskChoice.value = jsonChoice["value"];
         taskChoice.id = jsonChoice["id"];
+       // taskChoice.correct = true;
         return taskChoice;
       }
 

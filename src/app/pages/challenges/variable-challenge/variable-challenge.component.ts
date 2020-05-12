@@ -6,6 +6,9 @@ import { ChallengeItemAnswer } from '../../../common/challenge/challengeItemAnsw
 import { ChallengeAnswer } from '../../../common/challenge/challengeAnswer';
 import { JsonParserService } from '../../../services/jsonParser.service';
 import { SingleChoiceComponent } from '../../../common/challenge-types/single-choice/single-choice.component';
+import { MatDialog } from '@angular/material/dialog';
+import { LessonDialogComponent } from '../../lessons/dialog/lesson-dialog/lesson-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-variable-challenge',
@@ -16,15 +19,25 @@ export class VariableChallengeComponent implements OnInit {
 
   @ViewChild(SingleChoiceComponent)
   private singleChoiceComponent: SingleChoiceComponent;
+
+  style1:boolean = false;
+  style2:boolean = true;
   
   challenge: Challenge;
 
   challengeAnswers: ChallengeAnswer = new ChallengeAnswer();
 
-  constructor(private challengesService: ChallengesService, private jsonParserService: JsonParserService) { }
+  constructor(private challengesService: ChallengesService, private jsonParserService: JsonParserService, public dialog: MatDialog, 
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    let fromLessonWindow:boolean = window.history.state.fromLesson;
+
     this.challengesService.getVariableChallenge().subscribe(result => {
+      if(fromLessonWindow == null){
+        this.openDialog();
+      }
+      
       this.challenge = this.jsonParserService.serializeChallengeObject(result);
       this.challengeAnswers.challengeId = this.challenge.id;
     });
@@ -42,7 +55,31 @@ export class VariableChallengeComponent implements OnInit {
   }
 
   submitAnswers(): void {
-    this.singleChoiceComponent.submit();
+    this.singleChoiceComponent.submitAnswer();
+    this.sendAnswers();
+  }
+
+  receiveAnswer(challengeItemAnswers: ChallengeItemAnswer):void{
+    this.singleChoiceComponent.receiveAnswer(challengeItemAnswers);
+  }
+
+  sendAnswers() {
+    this.challengesService.sendAnswers(this.challengeAnswers).subscribe( res => {
+      this.receiveAnswer(res.challengeItemAnswers[0]);
+      let x = 0;
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LessonDialogComponent, {
+      width: '700px',
+      height: '670px',
+      data: {lessonType: 'VARIABLE'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

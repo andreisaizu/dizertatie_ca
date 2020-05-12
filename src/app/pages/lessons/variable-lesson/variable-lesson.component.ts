@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-variable-lesson',
@@ -8,10 +8,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VariableLessonComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  @Input() fromDialog:boolean;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     let x : number = 0;
+  }
+
+  goToChallenge(){
+    let fromLesson:boolean = true;
+    this.router.navigate(['/challenges/variable'], {state: {fromLesson: true}});
   }
 
 }

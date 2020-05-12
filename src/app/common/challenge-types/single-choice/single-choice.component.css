@@ -1,0 +1,9 @@
+.correct {
+    border-width: 8px;
+    border-color: green;
+}
+
+.mat-radio-disabled {
+    border-color:rgb(66, 134, 244); 
+    color:rgb(66, 134, 244);
+}

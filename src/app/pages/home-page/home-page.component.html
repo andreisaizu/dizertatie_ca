@@ -1,23 +1,8 @@
-<button mat-button>Home</button>
-<mat-menu #aboveMenu="matMenu" [routerLink]="['/home']">
-</mat-menu>
-
-<button mat-button [matMenuTriggerFor]="lessonsMenu">Lessons</button>
-<mat-menu #lessonsMenu="matMenu">
-  <button mat-menu-item [routerLink]="['/lessons/variable']">Variable</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
-
-<button mat-button [matMenuTriggerFor]="challengesMenu">Challenges</button>
-<mat-menu #challengesMenu="matMenu">
-  <button mat-menu-item [routerLink]="['/challenges/variable']">Variable</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
-
-<button mat-button [matMenuTriggerFor]="accountMenu">Account</button>
-<mat-menu #accountMenu="matMenu">
-  <button mat-menu-item>Profile</button>
-  <button mat-menu-item>Sign out</button>
-</mat-menu>
-
-
+<div style="margin-top: 160px; margin-left: 400px; width:800px;">
+  <mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile [routerLink]="['/lessons/variable']" class="gridTile"> LESSONS</mat-grid-tile>
+    <mat-grid-tile [routerLink]="['/challenges/variable']" class="gridTile">CHALLENGES</mat-grid-tile>
+    <mat-grid-tile class="gridTile">ACCOUNT</mat-grid-tile>
+    <mat-grid-tile class="gridTile">SETTINGS</mat-grid-tile>
+  </mat-grid-list>
+</div>

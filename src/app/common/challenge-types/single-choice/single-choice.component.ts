@@ -11,8 +11,10 @@ import { ChallengeItemTaskAnswer } from '../../challenge/challengeItemTaskAnswer
 })
 export class SingleChoiceComponent implements OnInit {
 
-  itemAnswer: ChallengeItemAnswer = new ChallengeItemAnswer();
 
+  itemAnswer: ChallengeItemAnswer = new ChallengeItemAnswer();
+  validatedAnswer: ChallengeItemAnswer = new ChallengeItemAnswer();
+  validated: boolean = false;
   @Input() challengeItem: ChallengeItem;
 
   @Output() challengeItemAnswerEmitter = new EventEmitter<ChallengeItemAnswer>();
@@ -26,7 +28,7 @@ export class SingleChoiceComponent implements OnInit {
     let x = 0;
   }
 
-  submit() {
+  submitAnswer() {
     this.itemAnswer.challengeItemId = this.challengeItem.id;
     this.challengeItem.challengeItemTaskList.forEach(itemTask => {
       let challengeItemTaskAnswer: ChallengeItemTaskAnswer = new ChallengeItemTaskAnswer();
@@ -35,6 +37,11 @@ export class SingleChoiceComponent implements OnInit {
       this.itemAnswer.taskAnswers.push(challengeItemTaskAnswer);
     });
     this.challengeItemAnswerEmitter.emit(this.itemAnswer);
+  }
+
+  receiveAnswer(challengeItemAnswers: ChallengeItemAnswer) {
+    this.validated = true;
+    this.validatedAnswer = challengeItemAnswers;
   }
 
 }

@@ -1,0 +1,21 @@
+<button mat-button>Home</button>
+<mat-menu #aboveMenu="matMenu" [routerLink]="['home']">
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="lessonsMenu">Lessons</button>
+<mat-menu #lessonsMenu="matMenu">
+  <button mat-menu-item [routerLink]="['/lessons/variable']">Variable</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="challengesMenu">Challenges</button>
+<mat-menu #challengesMenu="matMenu">
+  <button mat-menu-item [routerLink]="['/challenges/variable']">Variable</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="accountMenu">Account</button>
+<mat-menu #accountMenu="matMenu">
+  <button mat-menu-item>Profile</button>
+  <button mat-menu-item>Sign out</button>
+</mat-menu>

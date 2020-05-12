@@ -1,0 +1,19 @@
+.gridTile {
+    background-color:#ced7e2; 
+    border-color: lightskyblue;
+    border-width: 30px;
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-family:Book Antiqua;
+    font-weight: bolder; 
+    margin-right: 18px;
+    height: 350px;
+    width: 370px;
+}
+
+.gridTile:hover {
+    color:floralwhite; 
+    font-size: larger;
+    margin-right: 10px;
+    box-shadow: 5px 10px 8px 3px lightskyblue;
+}
