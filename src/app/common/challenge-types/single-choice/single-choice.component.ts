@@ -3,6 +3,8 @@ import { ChallengeItem } from '../../challenge/challengeItem';
 import { ChallengeItemAnswer } from '../../challenge/challengeItemAnswer';
 import { ChallengeItemTask } from '../../challenge/challengeItemTask';
 import { ChallengeItemTaskAnswer } from '../../challenge/challengeItemTaskAnswer';
+import { ChallengeValidatedAnswer } from '../../challenge/challengeValidatedAnswer';
+import { ChallengeValidatedItemAnswer } from '../../challenge/challengeValidatedItemAnswer';
 
 @Component({
   selector: 'app-single-choice',
@@ -13,7 +15,7 @@ export class SingleChoiceComponent implements OnInit {
 
 
   itemAnswer: ChallengeItemAnswer = new ChallengeItemAnswer();
-  validatedAnswer: ChallengeItemAnswer = new ChallengeItemAnswer();
+  validatedAnswer: ChallengeValidatedItemAnswer = new ChallengeValidatedItemAnswer();
   validated: boolean = false;
   @Input() challengeItem: ChallengeItem;
 
@@ -39,9 +41,9 @@ export class SingleChoiceComponent implements OnInit {
     this.challengeItemAnswerEmitter.emit(this.itemAnswer);
   }
 
-  receiveAnswer(challengeItemAnswers: ChallengeItemAnswer) {
+  receiveAnswer(challengeValidatedItemAnswers: ChallengeValidatedItemAnswer) {
     this.validated = true;
-    this.validatedAnswer = challengeItemAnswers;
+    this.validatedAnswer = challengeValidatedItemAnswers;
   }
 
 }

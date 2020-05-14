@@ -9,6 +9,8 @@ import { SingleChoiceComponent } from '../../../common/challenge-types/single-ch
 import { MatDialog } from '@angular/material/dialog';
 import { LessonDialogComponent } from '../../lessons/dialog/lesson-dialog/lesson-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChallengeValidatedAnswer } from '../../../common/challenge/challengeValidatedAnswer';
+import { ChallengeValidatedItemAnswer } from '../../../common/challenge/challengeValidatedItemAnswer';
 
 @Component({
   selector: 'app-variable-challenge',
@@ -59,7 +61,7 @@ export class VariableChallengeComponent implements OnInit {
     this.sendAnswers();
   }
 
-  receiveAnswer(challengeItemAnswers: ChallengeItemAnswer):void{
+  receiveAnswer(challengeItemAnswers: ChallengeValidatedItemAnswer):void{
     this.singleChoiceComponent.receiveAnswer(challengeItemAnswers);
   }
 

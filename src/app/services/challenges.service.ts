@@ -4,6 +4,7 @@ import { ApiService } from "./api.service";
 import { Challenge } from "../common/challenge/challenge";
 import { ChallengeTemplate } from "../common/challenge/challengeTemplate";
 import { ChallengeAnswer } from "../common/challenge/challengeAnswer";
+import { ChallengeValidatedAnswer } from "../common/challenge/challengeValidatedAnswer";
 
 
 @Injectable({
@@ -23,7 +24,7 @@ export class ChallengesService {
         return this.getChallengeByTemplate(ChallengeTemplate[ChallengeTemplate.VARIABLE]);
     }
 
-    sendAnswers(challengeAnswers: ChallengeAnswer): Observable<ChallengeAnswer> {
+    sendAnswers(challengeAnswers: ChallengeAnswer): Observable<ChallengeValidatedAnswer> {
         return this.apiService.post(`${this.endpoint}/validateAnswer`, challengeAnswers);
     }
 
