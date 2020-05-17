@@ -5,6 +5,8 @@ import { ChallengeItemTask } from '../../challenge/challengeItemTask';
 import { ChallengeItemTaskAnswer } from '../../challenge/challengeItemTaskAnswer';
 import { ChallengeValidatedAnswer } from '../../challenge/challengeValidatedAnswer';
 import { ChallengeValidatedItemAnswer } from '../../challenge/challengeValidatedItemAnswer';
+import { Choice } from '../../challenge/choice';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-single-choice',
@@ -12,7 +14,6 @@ import { ChallengeValidatedItemAnswer } from '../../challenge/challengeValidated
   styleUrls: ['./single-choice.component.css']
 })
 export class SingleChoiceComponent implements OnInit {
-
 
   itemAnswer: ChallengeItemAnswer = new ChallengeItemAnswer();
   validatedAnswer: ChallengeValidatedItemAnswer = new ChallengeValidatedItemAnswer();
@@ -26,16 +27,12 @@ export class SingleChoiceComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChoiceSelected(): void {
-    let x = 0;
-  }
-
   submitAnswer() {
     this.itemAnswer.challengeItemId = this.challengeItem.id;
     this.challengeItem.challengeItemTaskList.forEach(itemTask => {
       let challengeItemTaskAnswer: ChallengeItemTaskAnswer = new ChallengeItemTaskAnswer();
       challengeItemTaskAnswer.challengeItemTaskId = itemTask.id;
-      challengeItemTaskAnswer.selectedChoicesIds.push(itemTask.selectedChoice.id);
+      challengeItemTaskAnswer.selectedChoicesIds.push(itemTask.selectedChoice[0].id);
       this.itemAnswer.taskAnswers.push(challengeItemTaskAnswer);
     });
     this.challengeItemAnswerEmitter.emit(this.itemAnswer);
@@ -44,6 +41,16 @@ export class SingleChoiceComponent implements OnInit {
   receiveAnswer(challengeValidatedItemAnswers: ChallengeValidatedItemAnswer) {
     this.validated = true;
     this.validatedAnswer = challengeValidatedItemAnswers;
+  }
+
+  onChoiceSelected(event: MatRadioChange): void {
+    let choice: Choice = event.value;
+    let currentItemTask: ChallengeItemTask = this.challengeItem.challengeItemTaskList.filter(itemTask => itemTask.id == choice.challengeTaskId)[0];
+    currentItemTask.selectedChoice = new Array();
+    currentItemTask.selectedChoice.push(choice);
+
+    let itemTaskIdx = this.challengeItem.challengeItemTaskList.findIndex(itemTask => itemTask.id == currentItemTask.id);
+    this.challengeItem.challengeItemTaskList[itemTaskIdx] = currentItemTask;
   }
 
 }

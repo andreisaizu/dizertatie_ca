@@ -17,7 +17,8 @@
         </div>
         <mat-divider class="my-4"></mat-divider>
         <div *ngIf="checkItemInstanceOf(challengeItem, 'MultipleChoiceChallenge')">
-            <app-multiple-choice [challengeItem]="challengeItem" class="p-2"></app-multiple-choice>
+            <app-multiple-choice [challengeItem]="challengeItem" class="p-2"
+            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-multiple-choice>
         </div>
         <mat-divider class="my-4"></mat-divider>
         <div *ngIf="checkItemInstanceOf(challengeItem, 'CorrectOrderChallenge')">

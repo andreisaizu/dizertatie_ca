@@ -1,3 +1,26 @@
-<mat-radio-group aria-label="Choose correct answer" *ngFor="let challengeItemTask of challengeItem.challengeItemTaskList">
-  <mat-radio-button *ngFor="let choice of challengeItemTask.choiceList">Option 1</mat-radio-button>
-</mat-radio-group>
+<div class="h5">{{challengeItem.description}}</div>
+<br>
+<div *ngIf="!validated">
+  <div *ngFor="let itemTask of challengeItem.challengeItemTaskList">
+    <div>{{itemTask.question}}</div>
+    <mat-checkbox *ngFor="let choice of itemTask.choiceList" (change)="onSelectedChoice($event, choice)">
+      {{choice.value}}</mat-checkbox>
+  </div>
+</div>
+
+<div *ngIf="validated">
+  <div *ngFor="let taskAnswer of validatedAnswer.taskAnswers">
+    <div>{{taskAnswer.question}}</div>
+    <mat-checkbox *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true (change)="onSelectedChoice($event, choice)" [checked]="choice.selected">
+      {{choice.value}}</mat-checkbox> <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+      src="../../../../assets/check.png"><img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+      src="../../../../assets/wrong.png">
+
+      <div *ngIf="!taskAnswer.correct">
+        Correct values:
+  
+        <p *ngFor="let correctValue of taskAnswer.correctChoicesValues" style="color: red;">{{correctValue}}</p>
+        <p>{{taskAnswer.explanation}}</p>
+      </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@
 
 <div *ngIf="!validated">
   <mat-radio-group *ngFor="let itemTask of challengeItem.challengeItemTaskList" [name]="itemTask.question" [value]="0"
-    (ngModelChange)="onChoiceSelected()" [(ngModel)]="itemTask.selectedChoice">
+    (change)="onChoiceSelected($event, choice)">
     <div>{{itemTask.question}}</div>
     <mat-radio-button [color]="warn" *ngFor="let choice of itemTask.choiceList" [value]="choice">
       {{choice.value}}</mat-radio-button>

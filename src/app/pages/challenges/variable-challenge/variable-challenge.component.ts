@@ -11,6 +11,7 @@ import { LessonDialogComponent } from '../../lessons/dialog/lesson-dialog/lesson
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChallengeValidatedAnswer } from '../../../common/challenge/challengeValidatedAnswer';
 import { ChallengeValidatedItemAnswer } from '../../../common/challenge/challengeValidatedItemAnswer';
+import { MultipleChoiceComponent } from '../../../common/challenge-types/multiple-choice/multiple-choice.component';
 
 @Component({
   selector: 'app-variable-challenge',
@@ -21,6 +22,9 @@ export class VariableChallengeComponent implements OnInit {
 
   @ViewChild(SingleChoiceComponent)
   private singleChoiceComponent: SingleChoiceComponent;
+
+  @ViewChild(MultipleChoiceComponent)
+  private multipleChoiceComponent: MultipleChoiceComponent;
 
   style1:boolean = false;
   style2:boolean = true;
@@ -58,11 +62,14 @@ export class VariableChallengeComponent implements OnInit {
 
   submitAnswers(): void {
     this.singleChoiceComponent.submitAnswer();
+    this.multipleChoiceComponent.submitAnswer();
     this.sendAnswers();
   }
 
   receiveAnswer(challengeItemAnswers: ChallengeValidatedItemAnswer):void{
     this.singleChoiceComponent.receiveAnswer(challengeItemAnswers);
+    this.multipleChoiceComponent.receiveAnswer(challengeItemAnswers);
+
   }
 
   sendAnswers() {

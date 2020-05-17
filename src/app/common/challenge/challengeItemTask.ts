@@ -5,8 +5,9 @@ export class ChallengeItemTask {
     challengeItemId:number;
     question:string;
     choiceList:Array<Choice>;
-    selectedChoice:Choice;
+    selectedChoice:Array<Choice>;
     constructor(){
         this.choiceList = new Array();
+        this.selectedChoice = new Array();
     }
 }
