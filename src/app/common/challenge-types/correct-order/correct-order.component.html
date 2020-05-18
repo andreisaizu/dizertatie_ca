@@ -1,7 +1,29 @@
-<div *ngFor="let itemTask of challengeItem.challengeItemTaskList">
-  <div cdkDropList (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let choice of itemTask.choiceList">
-      <mat-card style="cursor: pointer;" *ngFor="let choiceValue of choice.values" cdkDrag>{{choiceValue.value}}</mat-card>
+<div *ngIf="!validated">
+  <div *ngFor="let itemTask of challengeItem.challengeItemTaskList">
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let choice of itemTask.choiceList">
+        <mat-card style="cursor: pointer;" *ngFor="let choiceValue of choice.values" cdkDrag>{{choiceValue.value}}
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="validated" class="d-flex flex-row">
+  <div *ngFor="let itemTask of challengeItem.challengeItemTaskList" class="flex-column">
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let choice of itemTask.choiceList">
+        <mat-card style="cursor: pointer;" [disabled]=true *ngFor="let choiceValue of choice.values" cdkDrag>{{choiceValue.value}}
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let taskAnswer of validatedAnswer.taskAnswers" class="flex-column">
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let correctChoice of taskAnswer.correctChoices">
+        <mat-card style="cursor: pointer;" [disabled]=true *ngFor="let choice of correctChoice.choiceValueDtoList">{{choice.value}}
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

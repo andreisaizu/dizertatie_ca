@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ChallengeValidatedAnswer } from '../../../common/challenge/challengeValidatedAnswer';
 import { ChallengeValidatedItemAnswer } from '../../../common/challenge/challengeValidatedItemAnswer';
 import { MultipleChoiceComponent } from '../../../common/challenge-types/multiple-choice/multiple-choice.component';
+import { TrueFalseComponent } from '../../../common/challenge-types/true-false/true-false.component';
+import { CorrectOrderComponent } from '../../../common/challenge-types/correct-order/correct-order.component';
 
 @Component({
   selector: 'app-variable-challenge',
@@ -25,6 +27,12 @@ export class VariableChallengeComponent implements OnInit {
 
   @ViewChild(MultipleChoiceComponent)
   private multipleChoiceComponent: MultipleChoiceComponent;
+
+  @ViewChild(TrueFalseComponent)
+  private trueFalseComponent: TrueFalseComponent;
+
+  @ViewChild(CorrectOrderComponent)
+  private correctOrderComponent: CorrectOrderComponent;
 
   style1:boolean = false;
   style2:boolean = true;
@@ -63,13 +71,16 @@ export class VariableChallengeComponent implements OnInit {
   submitAnswers(): void {
     this.singleChoiceComponent.submitAnswer();
     this.multipleChoiceComponent.submitAnswer();
+    this.trueFalseComponent.submitAnswer();
+    this.correctOrderComponent.submitAnswer();
     this.sendAnswers();
   }
 
   receiveAnswer(challengeItemAnswers: Array<ChallengeValidatedItemAnswer>):void{
     this.singleChoiceComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'SINGLE_CHOICE')[0]);
     this.multipleChoiceComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'MULTIPLE_CHOICE')[0]);
-
+   // this.trueFalseComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'TRUE_FALSE')[0]);
+    this.correctOrderComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'CORRECT_ORDER')[0]);
   }
 
   sendAnswers() {

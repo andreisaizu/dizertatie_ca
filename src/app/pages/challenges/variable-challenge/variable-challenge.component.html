@@ -14,12 +14,13 @@
     </div>
 
     <div *ngIf="checkItemInstanceOf(challengeItem, 'TrueFalseChallenge')">
-        <app-true-false [challengeItem]="challengeItem" class="p-2">
-        </app-true-false>
+        <app-true-false [challengeItem]="challengeItem" class="p-2"
+        (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-true-false>
     </div>
 
     <div *ngIf="checkItemInstanceOf(challengeItem, 'CorrectOrderChallenge')">
-        <app-correct-order [challengeItem]="challengeItem" class="p-2"></app-correct-order>
+        <app-correct-order [challengeItem]="challengeItem" class="p-2"
+        (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-correct-order>
     </div>
 </div>
 
