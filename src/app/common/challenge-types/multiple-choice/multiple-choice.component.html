@@ -3,24 +3,28 @@
 <div *ngIf="!validated">
   <div *ngFor="let itemTask of challengeItem.challengeItemTaskList">
     <div>{{itemTask.question}}</div>
-    <mat-checkbox *ngFor="let choice of itemTask.choiceList" (change)="onSelectedChoice($event, choice)">
-      {{choice.value}}</mat-checkbox>
+    <div *ngFor="let choice of itemTask.choiceList">
+      <mat-checkbox *ngFor="let choiceValue of choice.values" (change)="onSelectedChoice($event, choiceValue)">
+        {{choiceValue.value}}</mat-checkbox>
+    </div>
   </div>
 </div>
 
 <div *ngIf="validated">
   <div *ngFor="let taskAnswer of validatedAnswer.taskAnswers">
     <div>{{taskAnswer.question}}</div>
-    <mat-checkbox *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true (change)="onSelectedChoice($event, choice)" [checked]="choice.selected">
-      {{choice.value}}</mat-checkbox> <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
-      src="../../../../assets/check.png"><img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+    <mat-checkbox *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true [checked]="choice.selected">
+      {{choice.values[0]}}</mat-checkbox>
+    <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+      src="../../../../assets/check.png">
+    <img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
       src="../../../../assets/wrong.png">
 
-      <div *ngIf="!taskAnswer.correct">
-        Correct values:
-  
-        <p *ngFor="let correctValue of taskAnswer.correctChoicesValues" style="color: red;">{{correctValue}}</p>
-        <p>{{taskAnswer.explanation}}</p>
-      </div>
+    <div *ngIf="!taskAnswer.correct">
+      Correct values:
+
+      <p *ngFor="let correctChoice of taskAnswer.correctChoices" style="color: red;">{{correctChoice.choiceValueDtoList[0].value}}</p>
+      <p>{{taskAnswer.explanation}}</p>
+    </div>
   </div>
 </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { ChallengeItem } from '../../challenge/challengeItem';
+import { ChallengeItemTask } from '../../challenge/challengeItemTask';
+import { Choice } from '../../challenge/choice';
+import { ChoiceValue } from '../../challenge/choiceValue';
 
 @Component({
   selector: 'app-correct-order',
@@ -10,20 +13,9 @@ import { ChallengeItem } from '../../challenge/challengeItem';
 export class CorrectOrderComponent implements OnInit {
 
   @Input() challengeItem: ChallengeItem;
-  movies = [
-    'Episode I - The Phantom Menace',
-    'Episode II - Attack of the Clones',
-    'Episode III - Revenge of the Sith',
-    'Episode IV - A New Hope',
-    'Episode V - The Empire Strikes Back',
-    'Episode VI - Return of the Jedi',
-    'Episode VII - The Force Awakens',
-    'Episode VIII - The Last Jedi',
-    'Episode IX – The Rise of Skywalker'
-  ];
 
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<ChoiceValue[]>) {
+    moveItemInArray(this.challengeItem.challengeItemTaskList[0].choiceList[0].values, event.previousIndex, event.currentIndex);
   }
 
   constructor() { }

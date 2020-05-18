@@ -1,3 +1,7 @@
-<div cdkDropList (cdkDropListDropped)="drop($event)">
-    <mat-card style="cursor: pointer;" *ngFor="let movie of movies" cdkDrag>{{movie}}</mat-card>
+<div *ngFor="let itemTask of challengeItem.challengeItemTaskList">
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let choice of itemTask.choiceList">
+      <mat-card style="cursor: pointer;" *ngFor="let choiceValue of choice.values" cdkDrag>{{choiceValue.value}}</mat-card>
+    </div>
   </div>
+</div>

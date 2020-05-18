@@ -6,6 +6,7 @@ import { ChallengeValidatedItemAnswer } from '../../challenge/challengeValidated
 import { MatRadioChange } from '@angular/material/radio';
 import { Choice } from '../../challenge/choice';
 import { ChallengeItemTask } from '../../challenge/challengeItemTask';
+import { ChoiceValue } from '../../challenge/choiceValue';
 
 @Component({
   selector: 'app-multiple-choice',
@@ -31,7 +32,7 @@ export class MultipleChoiceComponent implements OnInit {
       let challengeItemTaskAnswer: ChallengeItemTaskAnswer = new ChallengeItemTaskAnswer();
       challengeItemTaskAnswer.challengeItemTaskId = itemTask.id;
       itemTask.selectedChoice.forEach(choice => {
-        challengeItemTaskAnswer.selectedChoicesIds.push(choice.id);
+        challengeItemTaskAnswer.selectedChoicesIds.push(choice.values[0].choiceItemId);
       });
 
       this.itemAnswer.taskAnswers.push(challengeItemTaskAnswer);
@@ -44,13 +45,26 @@ export class MultipleChoiceComponent implements OnInit {
     this.validatedAnswer = challengeValidatedItemAnswers;
   }
 
-  onSelectedChoice(event: MatRadioChange, data: Choice) {
-    let currentItemTask: ChallengeItemTask = this.challengeItem.challengeItemTaskList.filter(itemTask => itemTask.id == data.challengeTaskId)[0];
+  onSelectedChoice(event: MatRadioChange, choiceValue: ChoiceValue) {
+    let currentChoice: Choice;
+    let currentItemTask: ChallengeItemTask;
+
+    this.challengeItem.challengeItemTaskList.forEach(challengeItemTask => {
+      challengeItemTask.choiceList.forEach(choice => {
+        choice.values.forEach(value => {
+          if(value.choiceItemId == choiceValue.choiceItemId){
+              currentChoice = choice;
+              currentItemTask = challengeItemTask;
+          }
+        })
+      })
+    })
+
     if (event.source.checked) {
-      currentItemTask.selectedChoice.push(data);
+      currentItemTask.selectedChoice.push(currentChoice);
     }
     else {
-      let choiceIdx = currentItemTask.selectedChoice.findIndex(choice => choice.id == data.id);
+      let choiceIdx = currentItemTask.selectedChoice.findIndex(choice => choice.id == choiceValue.choiceItemId);
       currentItemTask.selectedChoice.splice(choiceIdx, 1);
     }
 

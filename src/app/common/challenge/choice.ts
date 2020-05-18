@@ -1,7 +1,8 @@
+import { ChoiceValue } from "./choiceValue";
 
 export class Choice {
     id:number;
     challengeTaskId:number;
-    value:string;
+    values:Array<ChoiceValue>;
     correct:boolean;
 }

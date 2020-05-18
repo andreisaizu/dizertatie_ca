@@ -1,12 +1,15 @@
 <div class="h5">{{challengeItem.description}}</div>
- <br>
+<br>
 
 <div *ngIf="!validated">
   <mat-radio-group *ngFor="let itemTask of challengeItem.challengeItemTaskList" [name]="itemTask.question" [value]="0"
     (change)="onChoiceSelected($event, choice)">
     <div>{{itemTask.question}}</div>
-    <mat-radio-button [color]="warn" *ngFor="let choice of itemTask.choiceList" [value]="choice">
-      {{choice.value}}</mat-radio-button>
+    <div *ngFor="let choice of itemTask.choiceList">
+      <mat-radio-button [color]="warn" *ngFor="let choiceValue of choice.values" [value]="choiceValue">
+        {{choiceValue.value}}</mat-radio-button>
+    </div>
+
 
   </mat-radio-group><br><br>
 </div>
@@ -14,15 +17,20 @@
 <div *ngIf="validated">
   <mat-radio-group *ngFor="let taskAnswer of validatedAnswer.taskAnswers" [name]="taskAnswer.question">
     <div>{{taskAnswer.question}}</div>
-    <mat-radio-button [color]="warn" *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true
-      [checked]="choice.selected" [value]="choice.selected">
-      {{choice.value}}</mat-radio-button> <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
-      src="../../../../assets/check.png"><img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
-      src="../../../../assets/wrong.png">
+    <!-- <div *ngFor="let choice of itemTask.choiceList"> -->
+      <mat-radio-button [color]="warn" *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true
+        [checked]="choice.selected" [value]="choice.selected">
+        {{choice.values[0]}}</mat-radio-button>
+      <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+        src="../../../../assets/check.png">
+      <img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+        src="../../../../assets/wrong.png">
+    <!-- </div> -->
+
     <div *ngIf="!taskAnswer.correct">
       Correct values:
 
-      <p *ngFor="let correctValue of taskAnswer.correctChoicesValues" style="color: red;">{{correctValue}}</p>
+      <p *ngFor="let correctChoice of taskAnswer.correctChoices" style="color: red;">{{correctChoice.choiceValueDtoList[0].value}}</p>
       <p>{{taskAnswer.explanation}}</p>
     </div>
   </mat-radio-group>

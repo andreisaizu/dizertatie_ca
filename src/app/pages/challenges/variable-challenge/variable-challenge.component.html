@@ -1,32 +1,29 @@
-
-
 <app-navbar></app-navbar>
-<div class="d-flex flex-column ml-4">
-    <div class="d-flex mb-4 h3">Variable challenge</div>
+<!-- <div class="d-flex flex-column ml-4"> -->
+<div class="d-flex mb-4 h3">Variable challenge</div>
 
-
-    <div class="d-flex mb-4" *ngFor="let challengeItem of challenge.challengeItemList">
-        <div *ngIf="checkItemInstanceOf(challengeItem, 'SingleChoiceChallenge')">
-            <app-single-choice [challengeItem]="challengeItem" class="p-2"
-                (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-single-choice>
-        </div>
-        <mat-divider class="my-4"></mat-divider>
-        <div *ngIf="checkItemInstanceOf(challengeItem, 'TrueFalseChallenge')">
-            <app-true-false [challengeItem]="challengeItem" class="p-2">
-            </app-true-false>
-        </div>
-        <mat-divider class="my-4"></mat-divider>
-        <div *ngIf="checkItemInstanceOf(challengeItem, 'MultipleChoiceChallenge')">
-            <app-multiple-choice [challengeItem]="challengeItem" class="p-2"
-            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-multiple-choice>
-        </div>
-        <mat-divider class="my-4"></mat-divider>
-        <div *ngIf="checkItemInstanceOf(challengeItem, 'CorrectOrderChallenge')">
-            <app-correct-order [challengeItem]="challengeItem" class="p-2"></app-correct-order>
-        </div>
+<div class="mb-4 d-flex flex-row" *ngFor="let challengeItem of challenge.challengeItemList">
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'SingleChoiceChallenge')">
+        <app-single-choice [challengeItem]="challengeItem" class="p-2"
+            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-single-choice>
     </div>
 
-    <div class="d-flex">
-        <button mat-button (click)="submitAnswers()">Submit answers...</button>
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'MultipleChoiceChallenge')">
+        <app-multiple-choice [challengeItem]="challengeItem" class="p-2"
+            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-multiple-choice>
+    </div>
+
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'TrueFalseChallenge')">
+        <app-true-false [challengeItem]="challengeItem" class="p-2">
+        </app-true-false>
+    </div>
+
+    <div *ngIf="checkItemInstanceOf(challengeItem, 'CorrectOrderChallenge')">
+        <app-correct-order [challengeItem]="challengeItem" class="p-2"></app-correct-order>
     </div>
 </div>
+
+<div class="d-flex">
+    <button mat-button (click)="submitAnswers()">Submit answers...</button>
+</div>
+<!-- </div> -->

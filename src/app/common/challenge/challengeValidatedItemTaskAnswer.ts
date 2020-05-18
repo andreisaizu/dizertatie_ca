@@ -1,9 +1,10 @@
 import { Choice } from "./choice";
+import { ChoiceDto } from "./choiceDto";
 
 export class ChallengeValidatedItemTaskAnswer {
     challengeItemTaskId: number;
     selectedChoicesIds: Array<number>;
-    correctChoicesValues: Array<string>;
+    correctChoices: Array<ChoiceDto>;
     taskChoiceDtoList:Array<Choice>;
     correct:boolean;
     explanation:string;

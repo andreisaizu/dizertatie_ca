@@ -66,16 +66,15 @@ export class VariableChallengeComponent implements OnInit {
     this.sendAnswers();
   }
 
-  receiveAnswer(challengeItemAnswers: ChallengeValidatedItemAnswer):void{
-    this.singleChoiceComponent.receiveAnswer(challengeItemAnswers);
-    this.multipleChoiceComponent.receiveAnswer(challengeItemAnswers);
+  receiveAnswer(challengeItemAnswers: Array<ChallengeValidatedItemAnswer>):void{
+    this.singleChoiceComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'SINGLE_CHOICE')[0]);
+    this.multipleChoiceComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'MULTIPLE_CHOICE')[0]);
 
   }
 
   sendAnswers() {
     this.challengesService.sendAnswers(this.challengeAnswers).subscribe( res => {
-      this.receiveAnswer(res.challengeItemAnswers[0]);
-      let x = 0;
+      this.receiveAnswer(res.challengeItemAnswers);
     });
   }
 
