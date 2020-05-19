@@ -78,6 +78,9 @@ import { TrueFalseResultComponent } from './common/challenge-types/true-false-re
 import { MultipleChoiceResultComponent } from './common/challenge-types/multiple-choice-result/multiple-choice-result.component';
 import { CorrectOrderResultComponent } from './common/challenge-types/correct-order-result/correct-order-result.component';
 import { NavbarComponent } from './common/navbar/navbar/navbar.component';
+import { BasicNotionsLessonComponent } from './pages/lessons/basic-notions-lesson/basic-notions-lesson.component';
+import { InstructionTypesComponent } from './pages/lessons/instruction-types/instruction-types.component';
+import { ArrayLessonComponent } from './pages/lessons/array-lesson/array-lesson.component';
 
 const routes: Routes = [
   {
@@ -89,8 +92,16 @@ const routes: Routes = [
     component: VariableLessonComponent
   },
   {
-    path: 'challenges/variable',
-    component: VariableChallengeComponent
+    path: 'lessons/basic-notions',
+    component: BasicNotionsLessonComponent
+  },
+  {
+    path: 'lessons/instructions',
+    component: InstructionTypesComponent
+  },
+  {
+    path: 'lessons/arrays',
+    component: ArrayLessonComponent
   }
 ];
 
@@ -128,7 +139,10 @@ const routes: Routes = [
     TrueFalseResultComponent,
     MultipleChoiceResultComponent,
     CorrectOrderResultComponent,
-    NavbarComponent
+    NavbarComponent,
+    BasicNotionsLessonComponent,
+    InstructionTypesComponent,
+    ArrayLessonComponent
   ],
   imports: [
     HttpClientModule,

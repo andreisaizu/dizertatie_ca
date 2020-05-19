@@ -1,0 +1,159 @@
+<h3>Notiuni de baza</h3>
+<div style="width: 600px;">
+
+    <p>Primul
+        program pe care majoritatea oamenilor îl scriu când învaţă un limbaj de
+        programare este programul “Hello World!”.</p>
+    <mat-card style="width: 350px;">
+        <p>using System;</p>
+        <p>class Hello</p>
+        <p>{{ '{' }}</p>
+        <p>&emsp;public static void Main()</p>
+        <p>&emsp;{{ '{' }}</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Console.WriteLine.("Hello, world!")</p>
+        <p>&emsp;{{ '}' }}</p>
+        <p>{{ '}' }}</p>
+    </mat-card>
+
+    <p>În urma rulării , la consola va apărea textul : Hello, World!</p>
+
+
+    <p>În C#, o aplicaţie este o colecţie de una sau mai multe clase, structuri de date şi
+        alte tipuri . Clasa este definită ca un set de date combinate cu metode (funcţii) de manipulare a acestor date.
+    </p>
+
+    <p>Analizand programul Hello, World se observă existenţa unei
+        singure clase , numite Hello. Această clasă este introdusă prin cuvântul cheie
+        <b>class</b> . Urmează apoi deschiderea unei acolade <b>{{ '{' }}</b> . Tot ce urmază până la acolada
+        închisă corespunzătoare <b>{{ '}' }}</b> aparţine clasei.</p>
+
+
+    <b>Important!</b>
+    <p>Limbajul C# este case sensitive.</p>
+    <p>Numele metodei trebuie să fie întotdeauna <b>“Main”</b>, scris cu <b>‘M’</b> mare, restul fiind litere mici.</p>
+    <p>Deşi pot exista multe clase într-o aplicatie C#, poate exista un singur punct de
+        început. Este posibil ca mai multe clase să aibe definite metode Main, dar doar
+        una dintre acestea va fi executată . Va trebui ca programatorul să specifice care
+        dintre metodele Main să fie executate.</p>
+
+    <h5>Namespace</h5>
+    <p>C# are la dispoziţie o colecţie foarte mare de clase
+        care se ocupă cu o serie mare de operaţiuni. Pentru a organiza acest număr
+        foarte mare de clase, se folosesc Namespace-uri. Un namespace este un grup
+        de clase ce au legatură una cu alta. Un namespace poate conţine şi alte
+        namespace uri , formând o structură arborescentă.</p>
+    <p>
+        Platforma .NET este alcătuită din multe namespace-uri, cel mai important
+        dintre acestea fiind System. Namespace-ul System conţine clasele pe care
+        majoritatea aplicaţiilor le folosesc pentru integrarea cu sistemul de operare.
+    </p>
+
+
+    <p>O clasă dintr un anumit namespace poate fi referită prefixând namespace-ul la
+        numele clasei. De exemplu, clasa Console este conţinută în namespace-ul
+        System. Pentru a apela metoda WriteLine a clasei Console, se poate scrie
+        următoarea linie de cod: </p>
+    <mat-card style="width: 350px;">System.Console.WriteLine(“Hello, world!")</mat-card>
+
+    <br>
+    <br>
+
+
+    <h4>Sistemul de tipuri</h4>
+
+    <p>La definirea unei variabile trebuie ales tipul de date care se potriveste cel mai bine cu cerinţele.
+        Tipul de date determină care sunt valorile permise pentru acea variabilă.
+        C# suporta tipuri de bază, cum ar fi <b>int</b>, <b>long</b>, <b>bool</b>, etc. . Aceste tipuri mai sunt numite
+        și tipuri valoare. C# suporta de asemenea și tipuri mai complexe și
+        puternice, numite tipuri referință.</p>
+
+    <h5>Tipuri valoare</h5>
+    <p>Variabilele tip valoare sunt tipurile de bază suportate de limbaj, precum <b>char</b>
+        sau <b>int</b> . Ele reprezintă cele mai simple tipuri din C#. Variabilele de acest tip
+        conțin direct datele în variabilă.</p>
+
+    <h5>Tipuri referință</h5>
+    <p>
+        Variabilele de tip referință conțin doar o referință cu privire la zona unde sunt
+        stocate datele și nu datele direct. Ați avut deja de a face cu astfel de tipuri de
+        variabile. Vectorii, stringurile și excepțiile sunt toate tipuri referință ce sunt
+        implementate în complilatorul C# și în platforma .NET. Clasele, fie deja definite
+        sau definite de utilizator, sunt de asemenea variabile tip referință.
+    </p>
+
+
+    <h5>Denumirea variabilelor</h5>
+
+
+    <b>Reguli:</b>
+    <ul>
+        <li>Denumirea unei variabile să înceapă cu o literă sau underscore</li>
+        <li>După primul caracter să se folosească doar cifre, litere sau underscore</li>
+        <li>Să nu se foloseacă cuvintele rezervate în denumire (abstract , base, bool, default, if, finally)</li>
+        <li>Dacă nu se vor respecta regulile de mai sus vor rezulta erori de compilare</li>
+    </ul>
+
+
+
+    <h5>Declararea de variabile și atribuirea lor</h5>
+    <p>Variabilele care sunt declarate in metode, proprietati sau indexari sunt numite variabile locale. Definirea unei
+        variabile presupune specificarea tipului si numelui acesteia.</p>
+    <ul>
+        <li>Exemplu: <b>int itemCount;</b></li>
+    </ul>
+    <p>Se pot declara mai multe variabile in aceeasi linie ed cod separate prin virgulă.</p>
+    <ul>
+        <li>Exemplu: <b>int itemCount, numărAngajaţi</b></li>
+    </ul>
+
+    <p>Pentru a atribui o valoare unei variabile se folosesc operatorii de atribuire.</p>
+
+    <mat-card style="width: 350px;">
+        <p>int employeeNumber;</p>
+        <p>employeeNumber = 23;</p>
+    </mat-card>
+
+    <p>O variabilă poate fi, de asemenea, iniţializată la declararea acesteia</p>
+    <mat-card style="width: 350px;">
+        <p>int employeeNumber = 23;</p>
+    </mat-card>
+
+    <h4>Clasa String</h4>
+
+    <p>>În C#, tipul string
+        este folosit pentru a procesa caractere Unicode multiple.
+        Pentru comparație, tipul char este un tip valoare ce se ocupă cu un singur
+        caracter.</p>
+    <p>Numele tipului, <b>string</b> , este prescurtare pentru clasa <b>System.String</b>.
+        Compilatorul se ocupă de recunoașterea formei prescurtate, astfel încât oricare
+        dintre cele două forme poate fi folosită. </p>
+    <p>Clasa String reprezintă un șir de caractere ce nu poate fi modificat. Metode ce
+        par să modifice valoarea unui string întorc de fapt valoarea unei noi instanțe ce
+        conține modificările.</p>
+    <p>Clasa
+        String oferă un set foarte mare de metode.</p>
+
+    <b>Proprietatea Length</b>
+    <p>
+        Întoarce
+        un întreg ce reprezintă lungimea stringului, ca în exemplu:</p>
+    <mat-card style="width: 350px;">
+       <p> string msg = "abcde"</p>
+        <p>int slen = msg.Length ; // 5</p>
+    </mat-card>
+
+    <b>Metoda Equals</b>
+    <p> Clasa System.String conține o metodă numită Equals, care poate fi folosită
+        pentru a compara două stringuri, pentru a determina dacă sunt egale. Metoda
+        întoarce o valoare booleană, true dacă cele două sunt egale și false altfel.
+        Această metodă este supraîncărcată și poate fi folosită fie ca o metodă a unei
+        instanțe, fie static:</p>
+    <mat-card style="width: 450px;">
+        <p>string s1 = "Welcome";</p>
+        <p>string s2 = "Welcome";</p>
+        <p>if (s1.Equals(s2))</p>
+        <p>&emsp;Console.WriteLine("The strings are the same");</p>
+        <p>if (String.Equals (s1, s2)</p>
+        <p>&emsp;Console.WriteLine("The strings are the same");</p>
+    </mat-card>
+</div>
