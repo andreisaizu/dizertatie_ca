@@ -88,6 +88,10 @@ const routes: Routes = [
     component: HomePageComponent
   },
   {
+    path: 'challenges/variable',
+    component: VariableChallengeComponent
+  },
+  {
     path: 'lessons/variable',
     component: VariableLessonComponent
   },

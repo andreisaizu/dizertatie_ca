@@ -1,397 +1,167 @@
-Definirea unei enumeraţii
-•
-Utilizarea unei enumeraţii
-•
-Afişarea unei variabile de tip enumeraţie
-4
-<!-- enum Color {Red, Green, Blue}; -->
-Color colorPalette = Color.Red;
-<!-- Console.WriteLine(“{0}”, colorPalette); -->
-
-Enumeraţiile reprezint ă o modalitate eficient ă de a defini un set de
-constante ce pot fi atribuite unei variabile
-
-Declararea unei enumeraţii
-
-Pentru a declara o enumeraţie se utilizează cuvântul cheie enum
-urmat de numele variabilei şi valorile iniţiale
-
-De exemplu, enumeraţia următoare defineşte trei constante întregi,
-numite valorile enumeraţiei
-enum
-<!-- Color { Green, Blue} -->
-
-Valorile enumeraţiei încep întotdeauna de la 0 Prin urmare avem Red
-corespunde valorii 0 Green valorii 1 iar Blue valorii 2
-
-Utilizarea unei enumeraţii
-
-O varibilă de tip Color se poate declara în felul următor
-Color
-colorPalette
-
-Setarea valorii variabilei declarate
-colorPalette
-Color Red
-
-Operaţia anterioară se poate realiza şi prin castare din int în Color
-colorPalette
-==( 0
-
-Afișarea unei enumeraţii
-
-Pentru a afişa variabila declarată mai sus se procedează astfel
-Console
-WriteLine 0 colorPalette
+<h4>Instructiuni bloc</h4>
+
+<div style="width: 600px;">
+    <p>Un program este alcătuit dintr
+        o înlănţuire de instrucţiuni. În timpul rulării,
+        aceste instrucţiuni sunt executate una după alta, aşa cum apar în program, de
+        la stânga la dreapta şi de sus în jos.</p>
+    <p>Un set de instrucţiuni între acolade este numit bloc. Un bloc poate să fie
+        format dintr una sau mai multe instrucţiuni şi poate chiar să includă un alt bloc
+        (nesting)</p>
+    <p>
+        Fiecare bloc defineşte un context. O variabilă declarată într
+        un bloc este numită
+        o variabilă locală. O astfel de variabilă este definită din locul unde a fost
+        declarată până la închiderea acoladei ce marchează sfârşitul blocului.
+    </p>
+    <p>
+        În cazul existenţei mai multor blocuri nested, este recomandată definirea
+        variabilelor în cel mai specific bloc posibil, acest lucru făcând programul mai
+        clar. În C# nu este posibilă declararea unor variabile într un bloc intern cu
+        acelaşi nume ca variabilele din blocul părinte.
+    </p>
+
+    <h4>Tipuri de instructiuni</h4>
+
+    <br>
+    <p>Pe măsură ce complexitatea problemelor
+        rezolvate de programe creşte, la fel
+        creşte şi complexitatea logicii programului. În consecinţă, cursul programului
+        trebuie să fie controlat într un mod cât mai structurat. Acest lucru se poate
+        realiza folosind instrucţiuni de nivel mai înalt. Acestea se grupează în 3
+        categorii:</p>
+    <ul>
+        <li><b>Instrucţiuni de selecţie</b>
+            <p>Instrucţiunile <b>if</b> şi <b>switch</b> intră în această categorie. Ele permit luarea
+                unei decizii pe baza evaluării unei expresii şi executarea selectivă a
+                instrucţiunilor următoare în funcţie de decizia luată</p>
+        </li>
+        <li><b>Instrucţiuni de iteraţie</b>
+            <p>Instrucţiunile <b>while</b>, <b>do</b>, <b>for</b> şi <b>foreach</b> se execută repetitiv cât timp o
+                anumită condiţie este îndeplinită. Mai sunt numite şi instrucţiuni de
+                ciclare. Fiecare dintre aceste instrucţiuni este potrivită pentru un anumit
+                tip de iteraţie</p>
+        </li>
+        <li><b>Instrucţiuni de salt</b>
+            <p>Instrucţiunile <b>goto</b> , <b>break</b> şi <b>continue</b> sunt folosite pentru transferul
+                necondiţionat al controlului către o altă instrucţiune.</p>
+        </li>
+    </ul>
+
+    <h5>Instructiunea IF</h5>
+    <p><b>Sintaxa</b></p>
+    <mat-card style="width: 350px;">
+        <p>if (i < 0)</p>
+                <p>&nbsp;&nbsp;&nbsp; bloc instrucţiuni</p>
+                <p>else if (i == 0)</p>
+                <p>&nbsp;&nbsp;&nbsp; Console.Write("Zero");</p>
+                <p>else</p>
+                <p>&nbsp;&nbsp;&nbsp; Console.Write("Pozitiv");</p>
+    </mat-card>
+    <p>
+        Instrucţiunea <b>if</b> evaluează o expresie booleană pentru a determina ce trebuie
+        executat mai departe. Dacă valoarea expresiei este true , controlul este dat
+        blocului de instrucţiuni ce urmează dupa if . Dacă valoarea este false , controlul
+        este dat blocului else dacă există
+    </p>
+
+    <p>
+        În cazul în care blocul de instrucţiuni ce urmează instrucţiunii
+        <b>if</b> sau clauzei <b>else</b>
+        este format dintr o singură instrucţiune, acoladele sunt opţionale (t otuşi,
+        pentru a avea cod mai clar de înţeles şi mai ordonat, se recomandă folosirea
+        acoladelor )).
+    </p>
 
 
+    <h5>Instrucţiunea Switch</h5>
+    <p>
+        Instrucţiunea <b>switch</b> oferă un mecanism elegant pentru tratarea condiţiilor
+        complexe care, altfel ar necesita instrucţiuni <b>if</b> folosite în cascadă. Este
+        alcătuită din mai multe blocuri <b>case</b> , fiecare dintre acestea specificând o
+        singură constantă şi eticheta <b>case</b> asociată. Nu este posibilă asocierea a mai
+        multe constante aceleiaşi etichete <b>case</b>.
+    </p>
+    <p>
+        Pentru fiecare bloc <b>case</b> urmează apoi un bloc de instrucţiuni ce se va termina,
+        în cele mai multe cazuri, cu instrucţiunea break . În interiorul blocului se pot
+        face declaraţii de variabile sau constante, acestea fiind definite de la declaraţie
+        până la sfârşitul blocului <b>switch</b>.
+    </p>
 
-Tipuri definite de user
-Structura
-•
-Definirea unei structuri
-•
-Utilizarea unei structuri
-5
-<!-- public struct Employee {
-public string firstName;
-public int age;
-} -->
-Employee companyEmployee;
-companyEmployee.firstName = “Joe”;
-companyEmployee.age = 23;
-
-Structura reprezinta un tip valoare utilizat în general, pentru a encapsula mai
-multe variabile ce au o legătură între ele Deoarece structurile nu sunt alocate
-în heap este mai puţină muncă din partea garbage collector ului decât în
-cazul creării unei clase
-
-Definirea unei structuri
-
-O structură se poate folosi pentru a grupa tipuri predefinite ca în
-exemplul următor
-public
-<!-- struct Employee
-{
-public
-string firstName
-public
-int age
-} -->
-
-Acest cod crează o structură Employee care are două elemente first
-name şi age
-
-Utilizarea unei structuri
-
-Declararea unei variabile de tip Employee
-Employee
-companyEmployee
-
-Setarea valorii variabilei declarate mai sus
-companyEmployee
-firstName =="
-companyEmployee
-age 23
+    <p>Executia unei instrucţiuni <b>switch</b>:</p>
+    <ol>
+        <li>Dacă una dintre constantele specificate în etichetele case este egală cu
+            valoarea expresiei pe care se face <b>switch</b> , controlul este transferat către
+            blocul de instrucţiuni asociat</li>
+        <li>
+            Dacă niciuna dintre constantele specificate nu este egală cu valoarea
+            expresiei şi instrucţiunea <b>switch</b> conţine o etichetă <b>default</b> , controlul este
+            transferat către lista de instrucţiuni ce urmează etichetei <b>default</b>.
+        </li>
+        <li>
+            Daca nici una dintre constantele specificate nu este egală cu valoarea
+            expresiei pe care se face <b>switch</b> şi instrucţiunea switch nu are definită o
+            etichetă <b>default</b>, controlul este transferat la finalul instrucţiunii <b>switch</b>.
+        </li>
+    </ol>
 
-
+    <h5>Instructiunea while</h5>
+    <p>Instrucţiunea
+        while este cea mai simplă dintre toate instrucţiunile de iteraţie.
+        Instrucţiunea va executa repetitiv un bloc de instrucţiuni <b>while</b> (cât timp)
+        expresia booleană asociată este adevărată. Este important faptul că expresia</p>
+    <p>Execuția instrucţiunii:</p>
+    <ol>
+        <li>Expresia booleană ce controlează instrucţiunea while este evaluată</li>
+        <li>Dacă expresia este evaluată la true , controlul este transferat blocului de
+            instrucţiuni ataşat instrucţiunii <b>while</b>. La finalul blocului, controlul este
+            automat trimis la începutul instrucţiunii <b>while</b> şi expresia este reevaluată</li>
+        <li>Dacă expresia este evaluată la false, controlul este transferat la finalul
+            instrucţiunii <b>while</b> şi nu se mai execută instrucţiunile din bloc.</li>
+    </ol>
+    <p>Expresia ce controlează instrucţiunea este testată la începutul buclei <b>while</b>. Este
+        posibil ca instrucţiunile din bloc să nu execute nici o dată.</p>
 
 
+    <h5>Instructiunea do-while</h5>
+    <p>Instrucţiunea <b>do</b> este întotdeauna cuplată cu o instrucţiune <b>while</b>. Este similar
+        cu o instrucţiunea <b>while</b>, cu excepţia faptului că evaluarea expresiei, pentru a
+        decide dacă se va executa un ciclu sau se va ieşi, se face la finalul ciclului, nu la
+        început. Acest lucru înseamnă că instrucţiunea <b>do</b> va itera cel puţin o dată.</p>
 
-Conversia implicită de tipuri
-•
-Conversie int în long
-•
-Conversia implicită nu poate eşua
-6
-using System;
-<!-- class Test
-{
-static void Main()
-{
-int intValue = 125;
-long longValue = intValue;
-Console.Writeline(“(long){0} = {1}”, intValue,
-longValue);
-} -->
+    <p>Execuția instrucţiunii:</p>
+    <ol>
+        <li>Controlul este transferat blocului de instrucţiuni</li>
+        <li>Când se ajunge la sfârşitul blocului, se evaluează expresia booleană</li>
+        <li>Dacă rezultatul este <b>true</b>, controlul este transferat la începutul instrucţiunii <b>do</b></li>
+        <li>Dacă rezultatul este <b>false</b>, controlul este transferat la finalul instrucţiunii <b>do</b></li>
+    </ol>
 
-Deoarece valoarea maximă, respectiv minimă, a unei variabile de tip int se
-încadreză în intervalul de valori long, întotdeauna conversia dintr un int în
-long este sigură
+    <h5>Instructiunea break</h5>
+    <p>Instrucţiunea break trimite controlul programului la ieşirea din cea mai
+        apropiată instrucţiune de tip <b>switch</b>, <b>while</b>, <b>do</b>, <b>for</b> sau <b>foreach</b> care o conţine.</p>
+    <p>Dacă instrucțiunea nu se află într un bloc de tip switch, while, do, for sau
+        foreach, va fi generată o eroare la compilare.</p>
+    <p>În cazul în care instrucțiunea se află într un bloc imbricat într un alt bloc de
+        tipul enumerat mai sus, break se aplică doar pentru cel mai aproape bloc:</p>
+    <mat-card style="width: 400px;">
+    <p>while (a < 10)</p>
+    <p>&nbsp; &nbsp;{{ '{' }}</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; Console.WriteLine(“Begin");</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; while (b < 100)</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; {{ '{' }}</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Console.WriteLine(“Before break");</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Console.WriteLine(After break");</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; {{ '}' }}</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; Console.WriteLine("End");</p>
+    <p>&nbsp; &nbsp;{{ '}' }}</p>
+    </mat-card>
 
+    <br>
+    <p>Se va afisa pe consola: <br>
+        <br>Begin<br>Before break<br>End
+    </p>
 
-Conversia explicită de tipuri
-•
-Conversie long în int prin cast
-•
-Conversia explicită poate eşua
-–
-Poate modifica valoarea variabilei
-7
-<!-- using System;
-class Test
-{
-static void Main ( )
-{
-long longValue = Int64.MaxValue;
-int intValue = (int) longValue;
-Console.Writeline(“(long){0}={1}”,intValue,
-longValue);
-}
-} -->
-
-
-Deoarece are loc o dep ă şire de limită ceea ce se va afişa este
-(int)
-9223372036854775807 1
-
-
-
-Un program este alcătuit dintr
-o înlănţuire de instrucţiuni. În timpul rulării,
-aceste instrucţiuni sunt executate una după alta, aşa cum apar în program, de
-la stânga la dreapta şi de sus în jos.
-În momentul dezvoltării aplicaţiilor C#, instrucţiunile
-sunt grupate aşa cum se
-întâmplă şi în alte limbaje de programare. Acest lucru se realizează folosind
-sintaxa asemănătoare limbajelor precum C, C şi Java, adică închizând grupul
-<!-- de instrucţiuni între acolade: { şi }}. -->
-Un set de instrucţiuni între acolade este numit bloc. Un bloc poate să fie
-format dintr una sau mai multe instrucţiuni şi poate chiar să includă un alt bloc
-(
-
-
-    Concepte
-    de baz ă Instruc ţ iuni bloc
-    •
-    Un bloc de instrucţiuni este delimitat de acolade
-    •
-    Un bloc copil şi blocul părinte nu pot avea definite
-    variabile cu acelaşi nume; blocuri alăturate, însă, da
-    9
-    <!-- {
-    ……
-    }
-    {
-    int
-    i
-    {
-    int
-    i
-    }
-    }
-    {
-    int
-    i
-    }
-    ...
-    {
-    int
-    i
-    } -->
-
-
-    Fiecare bloc defineşte un context. O variabilă declarată într
-un bloc este numită
-o variabilă locală. O astfel de variabilă este definită din locul unde a fost
-declarată până la închiderea acoladei ce marchează sfârşitul blocului.
-În cazul existenţei mai multor blocuri nested, este recomandată definirea
-variabilelor în cel mai specific bloc posibil, acest lucru făcând programul mai
-clar. În C# nu este posibilă declararea unor variabile într un bloc intern cu
-acelaşi nume ca variabilele din blocul părinte. De exemplu următorul cod va
-genera eroare:
-<!-- int
-i
-{
-int
-i ; Eroare : i a fost deja definit ă î n b locul p ă rinte
-}
-Totuşi, variabile cu acelaşi nume pot fi definite în blocuri alăturate
-{
-int i ;
-...
-{
-int i ; -->
-Variabilele se pot declara oriunde într
-un bloc.
-
-
-Pe măsură ce complexitatea problemelor
-rezolvate de programe creşte, la fel
-creşte şi complexitatea logicii programului. În consecinţă, cursul programului
-trebuie să fie controlat într un mod cât mai structurat. Acest lucru se poate
-realiza folosind instrucţiuni de nivel mai înalt. Acestea se grupează în 3
-categorii:
-•
-Instrucţiuni de selecţie
-Instrucţiunile
-if şi switch intră în această categorie. Ele permit luarea
-unei decizii pe baza evaluării unei expresii şi executarea selectivă a
-instrucţiunilor următoare în funcţie de decizia luată
-•
-Instrucţiuni de iteraţie
-Instrucţiunile
-while , do , for şi foreach se execută repetitiv cât timp o
-anumită condiţie este îndeplinită. Mai sunt numite şi instrucţiuni de
-ciclare. Fiecare dintre aceste instrucţiuni este potrivită pentru un anumit
-tip de iteraţie
-•
-Instrucţiuni de salt
-Instrucţiunile
-goto , break şi continue sunt folosite pentru transferul
-necondiţionat al controlului către o altă instrucţiune.
-10
-
-
-Instrucţiunea
-if este principala instrucţiune de luare de decizii. Poate fi cuplată
-cu o clauză else opţională, aşa cum se vede mai sus.
-Instrucţiunea
-if evaluează o expresie booleană pentru a determina ce trebuie
-executat mai departe. Dacă valoarea expresiei este true , controlul este dat
-blocului de instrucţiuni ce urmează dupa if . Dacă valoarea este false , controlul
-este dat blocului else dacă există.
-
-
-Instruc
-ţiunea switch oferă un mecanism elegant pentru tratarea condiţiilor
-complexe care, altfe,l ar necesita instrucţiuni if folosite în cascadă. Este
-alcătuită din mai multe blocuri case , fiecare dintre acestea specificând o
-singură constantă şi eticheta case asociată. Nu este posibilă asocierea a mai
-multe constante aceleiaşi etichete case
-Pentru fiecare bloc
-case urmează apoi un bloc de instrucţiuni ce se va termina,
-în cele mai multe cazuri, cu instrucţiunea break . În interiorul blocului se pot
-face declaraţii de variabile sau constante, acestea fiind definite de la declaraţie
-până la sfârşitul blocului switch
-
-
-Execuţia unei instrucţiuni
-switch:
-1)
-Dacă una dintre constantele specificate în etichetele case este egală cu
-valoarea expresiei pe care se face switch , controlul este transferat către
-blocul de instruc ţ iuni asociat
-2)
-Dacă nici una dintre constantele specificate nu este egală cu valoarea
-expresiei şi instruc ţ iunea switch con ţ ine o etichetă default , controlul este
-trans f erat către lista de instruc ţ iuni ce urmează etichetei default
-3)
-D aca nici una dintre constantele specificate nu este egală cu valoarea
-expresiei pe care se face switch şi instruc ţ iunea switch nu are definită o
-etichetă default , controlul este transferat la finalul instruc ţ iunii switch
-
-Instrucţiunea
-while este cea mai simplă dintre toate instrucţiunile de iteraţie.
-Instrucţiunea va executa repetitiv un bloc de instrucţiuni while (cât timp)
-expresia booleană asociată este adevărată. Este important faptul că expresia
-evaluată de while trebuie neapărat să fie booleană, din moment ce C# nu
-suportă conversie implicită de la un întreg la o valoare booleană.
-Execuţia
-instruc ţ iunii
-1)
-Expresia b ooleană ce controlează instruc ţ iunea while este evaluată
-2)
-Dacă expresia este evaluată la true , controlul este transferat blocului de
-instruc ţ iuni ataşat instruc ţ iunii while. La finalul blocului , controlul este
-automat trimis la începutul instruc ţ iunii while şi expresia este reevaluată
-3)
-Dacă expresia este evaluată la false , controlul este transferat la finalul
-instruc ţ iunii while şi nu se mai execută instruc ţ iunile din bloc.
-Expresia
-ce controlează instruc ţ iunea este testată la î nceputul buclei while. Este
-posibil ca instrucţiunile din bloc să nu execute nici o dată.
-
-Instrucţiunea
-do este întotdeauna cuplată cu o instrucţiune while . Este similar
-cu o ins t rucţiunea while , cu excepţia faptului că evaluarea expresiei, pentru a
-decide dacă se va executa un ciclu sau se va ieşi, se face la finalul ciclului, nu la
-început. Acest lucru înseamnă că instrucţiunea do va itera cel puţin o dată.
-Execuţia instrucţiunii:
-1)
-Controlul este transferat blocului de instrucţiuni
-2)
-Când se ajunge la sfârşitul blocului, se evaluează expresia booleană
-3)
-Dacă rezultatul este true , controlul este transferat la începutul instrucţiunii
-do
-4)
-Dacă rezultatul este false , controlul este transferat la finalul instrucţiunii do
-
-Aceste erori pot fi minimizate folosind instrucţiunea
-for . Instrucţiunea for are
-partea de actualizare la începutul buclei, unde este mai greu de omis.
-Sintaxa pentru instrucţiunea
-for este:
-for (initializare; conditie; actualizare)
-<!-- {
-bloc
-instructiuni
-} -->
-Obs
-: Deşi codul de actualizare este scris înainte de blocul de instrucţiuni, în
-execuţie este rulat întâi blocul de instrucţiuni şi apoi codul din zona de
-actualizare.
-Ca
-ş i pentru celelalte instrucţiuni de ciclare, expresia din zona de condiţie
-trebuie să fie o expresie booleană. Dacă ea se evaluează la true , ciclul este
-continuat (condiţie de continuare, nu de terminare).
-
-
-
-Instrucţiunea break trimite controlul programului la ieşirea din cea mai
-apropiată instrucţiune de tip switch , while , do , for sau foreach care o conţine.
-
-Dacă instrucțiunea nu se află într un bloc de tip switch, while, do, for sau
-foreach, va fi generată o eroare la compilare.
-
-În cazul în care instrucțiunea se află într un bloc imbricat într un alt bloc de
-tipul enumerat mai sus, break se aplică doar pentru cel mai aproape bloc:
-wh
-ile (a < 10)
-<!-- {
-Console.WriteLine
-(“
-while
-(b < 100)
-{
-Console.WriteLine
-(“Before
-break
-;
-Console.WriteLine
-(“After
-}
-Console.WriteLine
-(“
-} -->
-
-
-Instrucţiunea continue începe o nouă iteraţie pentru cea mai apropiată
-instrucţiune de tipul while, do, for sau foreach
-
-Daca instrucțiunea nu este cuprinsă într un astfel de bloc, va aparea o eroare
-la compilare.
-
-La fel ca la break, dacă instrucțiunea continue se află într un bloc nested, ea
-va începe o nouă interație doar pentru cel mai apropiat bloc.
-int
-i =
-while (i < 10)
-<!-- {
-i
-if
-(i 2
-continue;
-Console.Write
-i
-} -->
-
-Dupa execuția exemplului de mai sus se va afișa: 1,3,4,5,6,7,8,9,10.
-La prima iterație i=0, dar după ce intră în while, vom avea i=1. Această
-valoare va fi afișată.
-La a doua iterație i=1, va fi incrementat, condiția din if este adevărată, ceea
-ce înseamnă că va fi executată instrucțiunea continue. Aceasta transferă
-controlul la începutul instrucțiunii while.
-Execuția programului continuă până când condiția i
-10 devine falsă.
+</div>

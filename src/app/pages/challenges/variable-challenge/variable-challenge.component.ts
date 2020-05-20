@@ -37,7 +37,7 @@ export class VariableChallengeComponent implements OnInit {
   style1:boolean = false;
   style2:boolean = true;
   
-  challenge: Challenge;
+  challenge: Challenge = new Challenge();
 
   challengeAnswers: ChallengeAnswer = new ChallengeAnswer();
 

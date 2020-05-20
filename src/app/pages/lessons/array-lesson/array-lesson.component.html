@@ -1,231 +1,136 @@
+<h3>Vectorii</h3>
 
-Ce este un vector?
-•
-Un vector este o înlănțuire de elemente
-–
-Metodă de a grupa date
-–
-Toate elementele din vector trebuie să fie de același tip
-–
-Elementele vectorului sunt accesate folosind indecși întregi
+<p>Există două metode fundamentale de a grupa date structuri și vectori</p>
+<ul>
+    <li>
+        <b>Structurile</b> sunt grupuri de date cu legătură între ele, dar de tipuri diferite
+        De exemplu, un nume ( vârstă ( și naționalitate ( se pot grupa
+        într o structură pentru a descrie o persoană Membrii unei structuri pot fi
+        accesați prin folosirea numelui câmpului.
+    </li>
+    <li>
+        <b>Vectorii</b> sunt secvențe de date de același tip De exemplu, o serie de case se
+        grupează natural pentru a forma o stradă Elementele dintr un vector se
+        accesează în funcție de un întreg de poziționare, numit index.
+    </li>
+</ul>
 
+<p>Vectorii se declară asemănător cu variabilele normale În primul rând, trebuie
+    precizat tipul elementelor ce vor alcătui vectorul, apoi o pereche de paranteze
+    drepte <b>[]</b> pentru a marca faptul că se va declara un vector. Mai trebuie
+    specificat doar numele variabilei, urmat de '<b>;</b>'</p>
 
+<p>Câteva restricții privind declararea vectorilor:</p>
+<ul>
+    <li>Nu se pot pune parantezele drepte la dreapta numelui variabilei</li>
+    <li>Nu se poate specifica dimensiunea vectorului la declarare.</li>
+</ul>
+<p>Următoarele exemple arată ce este permis și ce nu în C#</p>
+<mat-card style="width:350px;">
+    <p>type[] name; //permis</p>
+    <p>type name[]; //NU este permis</p>
+    <p>type[4] name; //NU este permis</p>
+</mat-card>
 
-Există
-două metode fundamentale de a grupa date structuri și vectori
-
-Structurile sunt grupuri de date cu legătură între ele, dar de tipuri diferite
-De exemplu, un nume ( vârstă ( și naționalitate ( se pot grupa
-într o structură pentru a descrie o persoană Membrii unei structuri pot fi
-accesați prin folosirea numelui câmpului
-
-Vectorii sunt secvențe de date de același tip De exemplu, o serie de case se
-grupează natural pentru a forma o stradă Elementele dintr un vector se
-accesează în funcție de un întreg de poziționare, numit index
+<p>Pentru a declara un vector unidimensional, se folosește o pereche de paranteze
+    drepte pentru a marca rangul vectorului Acesta mai este numit și vector de
+    rang 1 fiind nevoie de un singur index pentru a identifica un element</p>
+<p>Pentru a declara un vector bidimen s ional, se pune o virgulă între
+    parantezele drepte Un astfel de vector este numit de rang 2 deoarece este
+    nevoie de 2 indecși pentru a identifica un element Acest mod de declarare se
+    poate extinde, fiecare virgulă pusă între parantezele drepte va crește rangul
+    vectorului cu unu</p>
 
+<p>Pentru a accesa un element într un vector de rang 1 se folosește un
+    index Pentru a accesa un element într un vector de rang 2 se folosesc doi
+    indecși, separați printr o virgulă Notația se extinde la fel ca pentru declararea
+    vectorilor Pentru a accesa un element dintr un vector de rang k, se folosesc k
+    indecși separați prin virgule</p>
 
-Notația vectorilor în C#
-•
-Variabilele de tip vector se declară specificând:
-–
-Tipul de elemente din vector
-–
-Rangul vectorului
-–
-Numele variabilei
+<p>Toți indecșii încep de la zero Pentru a accesa primul element într un
+    vector unidimensional, folosiți expresia</p>
+<p>row[0] și nrow[1]</p>
+<p>Indexarea de la 0 înseamnă că ultimul element al unui vector de dimensiunea
+    <i>size</i> se va afla la index <i>[size-1]</i> și nu <i>[size]</i></p>
 
+<p>Proprietatea <b>Length</b> întoarce numărul total de elemente din vector,
+    indiferent de rangul vectorului Pentru a vedea mărimea unei anumite
+    dimensiuni, se folosește metoda <b>GetLength</b> ca în exemplul următor:</p>
 
-
-Vectorii
-se declară asemănător cu variabilele normale În primul rând, trebuie
-precizat tipul elementelor ce vor alcătui vectorul, apoi o pereche de paranteze
-drepte pentru a marca faptul că se va declara un vector Mai trebuie
-specificat doar numele variabilei, urmat de
-Câteva
-restricții privind declararea vectorilor
-•
-Nu se pot pune parantezele drepte la dreapta numelui variabilei
-•
-Nu se poate specifica dimensiunea vectorului la declarare
-Următoarele
-exemple arată ce este permis și ce nu în C#
-type[] name; //permis
-type name[]; //NU este permis
-type[4] name; //NU este permis
-
-Rangul unui vector
-•
-Cunoscut și ca dimensiune a vectorului
-
-long
-[] vector; int [,] matrice;
-Rang 1: Unidimensional
-Un index este asociat cu
-fiecare element
-Rang 2: Bidimensional
-Sunt necesari doi indecși
-pentru a accesa un
-
-Pentru
-a declara un vector unidimensional, se folosește o pereche de paranteze
-drepte pentru a marca rangul vectorului Acesta mai este numit și vector de
-rang 1 fiind nevoie de un singur index pentru a identifica un element
-Pentru
-a declara un vector bidimen s ional, se pune o virgulă între
-parantezele drepte Un astfel de vector este numit de rang 2 deoarece este
-nevoie de 2 indecși pentru a identifica un element Acest mod de declarare se
-poate extinde, fiecare virgulă pusă între parantezele drepte va crește rangul
-vectorului cu unu
-6
+<mat-card style="width:500px;">
+    <p>for (int r = 0; r < grid.GetLength(0); r++)</p>
+            <p>&nbsp;&nbsp;{{ '{' }}</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;for (int c = 0; c < grid.GetLength(1); c++)</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }}</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(grid[r, c]);</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}</p>
+                    <p>&nbsp;&nbsp;{{ '}' }}</p>
+</mat-card>
 
 
-Pentru
-a accesa un element într un vector de rang 1 se folosește un
-index Pentru a accesa un element într un vector de rang 2 se folosesc doi
-indecși, separați printr o virgulă Notația se extinde la fel ca pentru declararea
-vectorilor Pentru a accesa un element dintr un vector de rang k, se folosesc k
-indecși separați prin virgule
-Toți
-indecșii încep de la zero Pentru a accesa primul element într un
-vector unidimensional, folosiți expresia
-row[
-0 și n row 1
-Indexarea
-de la 0 înseamnă că ultimul element al unui vector de dimensiunea
-size se va afla la index [size 1 și nu [
+<p>Declararea unui vector nu va crea efectiv acel vector Acest lucru se datorează
+    faptului că vectorii sunt tipuri referință și nu tipuri valoare Trebuie folosit
+    cuvântul chei e new pentru a crea instanța vectorului În acest moment trebuie
+    specificată mărimea tuturor rangurilor pentru crearea unei astfel de instanțe.</p>
+<p>Următoarele linii de cod vor genera erori de compilare:</p>
 
+<mat-card style="width:400px;">
+    <p>long[] row = new long[] // nu este permis</p>
+    <p>int[,] grid = new int[] // nu este permis</p>
+</mat-card>
 
-Declararea
-unui vector nu va crea efectiv acel vector Acest lucru se datorează
-faptului că vectorii sunt tipuri referință și nu tipuri valoare Trebuie folosit
-cuvântul chei e new pentru a crea instanța vectorului În acest moment trebuie
-specificată mărimea tuturor rangurilor pentru crearea unei astfel de instanțe
-Următoarele linii de cod vor genera erori de compilare
-long[] row = new long[];
-long[];//nu este permis
-int[,] grid = new int[,];
-int[,];//nu este permis
-Compilatorul
-C# va inițializa implicit toate elementele vectorului la o
-valoare standard, depinzând de tipul elementelor din vector Pentru valori
-întregi, de exemplu, acestea vor fi inițializate la 0 pentru valori reale la 0 0
-pentru valori b ooleane la false
-Memoria
-pentru vectori va fi întotdeauna alocată continuu, indiferent de
-tipul elementelor din vector și de dimensiunea sa Din acest motiv, operațiunile
-de parcurgere de vectori vor fi foarte rapide
+<h5>Initializarea elementelor vectorilor</h5>
+<p>Se poate folosi o expresie de inițializare pentru a seta unui vector alte valori
+    inițiale decât cele implicite O expresie de inițializare este compusă dintr o serie
+    de expresii, toate incluse între acolade și despărțite de virgule Inițializarea este
+    făcută de la dreapta la stânga, putând fi folosite pentru inițializare apeluri de
+    metode și expresii complexe, ca în exemplul următor</p>
+<mat-card style="width:400px;">
+    <p>int[] data = new int[4] {{ '{' }}a, b(), c*d, e() + f(){{ '}' }};</p>
+</mat-card>
 
+<p>În momentul în care inițializarea se face în aceeași line de cod cu
+    declararea, există posibilitatea de a folosi o variantă prescurtată a instanțierii și
+    a inițializării</p>
+<mat-card style="width:400px;">
+    <p>int[] data1 = new int[4] {{ '{' }}0, 1, 2, 3{{ '}' }} //permis</p>
+    <p>int[] data2 = {{ '{' }}0, 1, 2, 3 {{ '}' }} //permis</p>
+    <p>data2 = new int[4] {{ '{' }}0, 1, 2, 3 {{ '}' }} //permis</p>
+    <p>data2 = {{ '{' }}0, 1, 2, 3{{ '}' }} //Nu este permis</p>
+</mat-card>
 
-Se
-poate folosi o expresie de inițializare pentru a seta unui vector alte valori
-inițiale decât cele implicite O expresie de inițializare este compusă dintr o serie
-de expresii, toate incluse între acolade și despărțite de virgule Inițializarea este
-făcută de la dreapta la stânga, putând fi folosite pentru inițializare apeluri de
-metode și expresii complexe, ca în exemplul următor
-<!-- int[] data = new int[4] {a, b(), c*d, e() + f()};
-În
-momentul în care inițializarea se face în aceeași line de cod cu
-declararea, există posibilitatea de a folosi o variantă prescurtată a instanțierii și
-a inițializării
-int[] data1 = new int[4] {0, 1, 2, 3};
-3};//permis
-int[] data2 = {0, 1, 2, 3};
-3};//permis
-data2 = new int[4] {0, 1, 2, 3};
-3};//permis
-data2 = {0, 1, 2, 3};
-3};//NU este permis -->
-La
-inițializarea vectorilor, trebuie specificate valorile pentru toate
-elementele vectorului Nu se poate ca o parte a vectorului să fie inițializată și
-cealaltă parte să folosească valoarea implicită
-<!-- int[] data3 = new int[2] {};
-{};//NU este permis
-int[] data4 = new int[2] {42};
-42};//NU este permis
-int[] data5 = new int[2] {42, 42};
-42};//permis -->
+<p>La inițializarea vectorilor, trebuie specificate valorile pentru toate
+    elementele vectorului. Nu se poate ca o parte a vectorului să fie inițializată și
+    cealaltă parte să folosească valoarea implicită:</p>
+<mat-card style="width:400px;">
+    <p>int[] data3 = new int[2] {{ '{' }} {{ '}' }}; // nu este permis</p>
+    <p>int[] data4 = new int[2] {{ '{' }}42{{ '}' }}; // nu este permis</p>
+    <p>int[] data5 = new int[2] {{ '{' }}42, 42{{ '}' }}; // permis</p>
+</mat-card>
 
+<p>Dimensiunea unui vector nu trebuie obligatoriu să fie o
+    constantă disponibilă la compilare:</p>
+<ul>
+    <li>Orice expresie ce întoarce un întreg va fi acceptată</li>
+    <li>Accesarea elementelor se va face la fel de rapid în toate cazurile</li>
+</ul>
 
-Inițializarea vectorilor multi
-dimensionali
-•
-Vectorii multi dimensionali se pot inițializa asemănător
-–
-Toate elementele vectorului trebuie specificate
+<p>Specificarea dimensiunii la compilare:</p>
+<mat-card style="width:400px;">
+    <p>long [] row = new long[4];</p>
+</mat-card>
 
+<p>Specificarea dimensiunii la run-time:</p>
+<mat-card style="width:400px;">
+    <p>string s = Console.ReadLine();</p>
+    <p>int size = int.Parse(s);</p>
+    <p>long [] row = new long[size];</p>
+</mat-card>
 
-Discuția
-este asemănătoare ca la vectorii unidimensionali Trebuie inițializate
-toate elementele vectorului
-
-
-Dimensiunea unui vector nu trebuie obligatoriu să fie o
-constantă disponibilă la compilare
-–
-Orice expresie ce întoarce un întreg va fi acceptată
-–
-Accesarea elementelor se va face la fel de rapid în toate cazurile
-13
-long
-[] row = new long[4];
-Specificarea dimensiunii la compilare
-string s = Console.ReadLine();
-int size = int.Parse(s);
-long
-[] row = new long[size];
-
-
-
-Pentru
-a crea și instanția vectori multidimensionali, mărimea dimensiunilor
-poate fi calculată de către o expresie la run time, nu trebuie să fie neapărat o
-constantă
-Se
-poate folosi chiar și o combinație între cele două
-System.Console.WriteLine
-Numarul de RANDURI :
-string s1 =
-System.Console.ReadLine
-int
-rows = int.Parse (
-...
-int
-[,] matrix = new int [ 4];
-Există
-o singură restricție Nu se poate folosi o expresie run time pentru a
-specifica un vector ce este apoi inițializat
-string s =
-System.Console.ReadLine
-int
-size = int.Parse (
-int
-<!-- [] data = new int [ size]{ 1, 2, 3}; NU este permis -->
-
-Copierea variabilelor de tip vector
-•
-Se va face doar copierea variabilei
-–
-Nu se va face copierea instanței vectorului
-–
-Două variabile pot face referință la aceeași instanță de vector
-14
-long
-[] row = new long[4];
-long
-[] copy = row;
-...
-row[0]++;
-long value = copy[0]
-Console.WriteLine(value);
-1
-copy
-row
-1
-0
-0
-0
-La
-copierea unei variabile de tip vector, nu se va obține o nouă instanță a
-vectorului Analizând codul de deasupra, se poate observa că ambele variabile
-fac referință la aceeași zonă de memorie
+<p>Există o singură restricție Nu se poate folosi o expresie run time pentru a
+    specifica un vector ce este apoi inițializat:</p>
+<mat-card style="width:400px;">
+    <p>string s = Console.ReadLine();</p>
+    <p>int size = int.Parse(s);</p>
+    <p>int [] row = new int[size] {{ '{' }} 1, 2, 3 {{ '}' }} ; //NU este permis</p>
+</mat-card>

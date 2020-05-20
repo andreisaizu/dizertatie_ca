@@ -138,7 +138,7 @@
         Întoarce
         un întreg ce reprezintă lungimea stringului, ca în exemplu:</p>
     <mat-card style="width: 350px;">
-       <p> string msg = "abcde"</p>
+        <p> string msg = "abcde"</p>
         <p>int slen = msg.Length ; // 5</p>
     </mat-card>
 
@@ -156,4 +156,32 @@
         <p>if (String.Equals (s1, s2)</p>
         <p>&emsp;Console.WriteLine("The strings are the same");</p>
     </mat-card>
-</div>
+
+
+
+    <h4>Enumeraţii</h4>
+    <p>Enumeraţiile reprezintă o modalitate eficientă de a defini un set de
+        constante ce pot fi atribuite unei variabile.</p>
+    <b>Declararea unei enumeraţii</b>
+    <ul>
+        <li>Pentru a declara o enumeraţie se utilizează cuvântul cheie <b>enum</b>
+            urmat de numele variabilei şi valorile iniţiale</li>
+        <li>De exemplu, enumeraţia următoare defineşte trei constante întregi,
+            numite valorile enumeraţiei
+            <mat-card style="width: 450px;">
+                <p>enum Color {{ '{' }}Red, Green, Blue{{ '}' }};</p>
+            </mat-card>
+        </li>
+        <li>Valorile enumeraţiei încep întotdeauna de la 0. Prin urmare Red
+            corespunde valorii 0, Green valorii 1, iar Blue valorii 2.</li>
+    </ul>
+    <b>Utilizarea unei enumeraţii</b>
+    <ul>
+        <li><p>O varibilă de tip <b>Color</b> se poate declara în felul următor:</p>
+            <mat-card style="width: 450px;">
+                <p>Color colorPalette;</p>
+                <p>colorPalette = Color.Red</p>
+            </mat-card>
+        </li>
+    </ul>
+   
