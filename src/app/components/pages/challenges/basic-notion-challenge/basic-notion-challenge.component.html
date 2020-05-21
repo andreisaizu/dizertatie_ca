@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <div class="clear-filter " filter-color="white"
+        style="background-image: url('assets/img/bg3.jpg'); background-size: cover">
+        <div class="page-header-image rellax-header" data-rellax-speed="-7">
+        </div>
+
+        <div style="padding-left: 460px; padding-top: 100px;  color: #31463F;">
+            <h3>Notiuni de baza</h3>
+            <div
+                style="width: 800px; background-color:#DADFE2; padding: 25px; border-width: 3px; border-color: #31463F; border-style: solid">
+
+                <div class="mb-4 d-flex flex-column align-items-center" *ngFor="let challengeItem of challenge.challengeItemList">
+                    <div *ngIf="checkItemInstanceOf(challengeItem, 'SingleChoiceChallenge')">
+                        <app-single-choice [challengeItem]="challengeItem" class="p-2"
+                            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-single-choice>
+                    </div>
+
+                    <div *ngIf="checkItemInstanceOf(challengeItem, 'MultipleChoiceChallenge')">
+                        <app-multiple-choice [challengeItem]="challengeItem" class="p-2"
+                            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-multiple-choice>
+                    </div>
+
+                    <div *ngIf="checkItemInstanceOf(challengeItem, 'TrueFalseChallenge')">
+                        <app-true-false [challengeItem]="challengeItem" class="p-2"
+                            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-true-false>
+                    </div>
+
+                    <div *ngIf="checkItemInstanceOf(challengeItem, 'CorrectOrderChallenge')">
+                        <app-correct-order [challengeItem]="challengeItem" class="p-2"
+                            (challengeItemAnswerEmitter)="onAddedNewAnswer($event)"></app-correct-order>
+                    </div>
+                </div>
+
+                <div class="d-flex" *ngIf="!validated">
+                    <button mat-button (click)="submitAnswers()">Submit answers...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

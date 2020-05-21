@@ -18,13 +18,13 @@
   <mat-radio-group *ngFor="let taskAnswer of validatedAnswer.taskAnswers" [name]="taskAnswer.question">
     <div>{{taskAnswer.question}}</div>
     <!-- <div *ngFor="let choice of itemTask.choiceList"> -->
-      <mat-radio-button [color]="warn" *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true
+      <mat-radio-button *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true
         [checked]="choice.selected" [value]="choice.selected">
         {{choice.values[0]}}</mat-radio-button>
-      <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+      <!-- <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
         src="../../../../assets/check.png">
       <img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
-        src="../../../../assets/wrong.png">
+        src="../../../../assets/wrong.png"> -->
     <!-- </div> -->
 
     <div *ngIf="!taskAnswer.correct">

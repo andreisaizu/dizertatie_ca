@@ -1,9 +1,9 @@
 <div class="h5">{{challengeItem.description}}</div>
 <br>
 
-<div *ngIf="!validated">
+<div *ngIf="!validated" class="d-flex flex-column align-items-center">
   <mat-radio-group *ngFor="let itemTask of challengeItem.challengeItemTaskList" [name]="itemTask.question" [value]="0"
-    (change)="onChoiceSelected($event, choice)">
+    (change)="onChoiceSelected($event, choice)" >
     <div>{{itemTask.question}}</div>
     <div *ngFor="let choice of itemTask.choiceList">
       <mat-radio-button [color]="warn" *ngFor="let choiceValue of choice.values" [value]="choiceValue">
@@ -14,24 +14,32 @@
   </mat-radio-group><br><br>
 </div>
 
-<div *ngIf="validated">
-  <mat-radio-group *ngFor="let taskAnswer of validatedAnswer.taskAnswers" [name]="taskAnswer.question">
-    <div>{{taskAnswer.question}}</div>
+<div *ngIf="validated" class="d-flex flex-column align-items-center">
+  <mat-radio-group *ngFor="let taskAnswer of validatedAnswer.taskAnswers" [name]="taskAnswer.question" class="d-flex flex-column">
+    <div>{{taskAnswer.question}}:   {{taskAnswer.points}}p</div>
     <!-- <div *ngFor="let choice of itemTask.choiceList"> -->
-      <mat-radio-button [color]="warn" *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true
-        [checked]="choice.selected" [value]="choice.selected">
-        {{choice.values[0]}}</mat-radio-button>
-      <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
+      <mat-radio-button *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true
+        [checked]="choice.selected" [value]="choice.selected">{{choice.values[0]}}</mat-radio-button>
+      <!-- <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
         src="../../../../assets/check.png">
       <img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
-        src="../../../../assets/wrong.png">
+        src="../../../../assets/wrong.png"> -->
     <!-- </div> -->
 
-    <div *ngIf="!taskAnswer.correct">
-      Correct values:
-
-      <p *ngFor="let correctChoice of taskAnswer.correctChoices" style="color: red;">{{correctChoice.choiceValueDtoList[0].value}}</p>
-      <p>{{taskAnswer.explanation}}</p>
+    <div *ngFor="let choice of taskAnswer.taskChoiceDtoList">
+      <p *ngIf="(choice.selected == true && choice.correct == false)"
+        style="color:red">
+        Choice {{choice.values[0]}} is wrong! {{choice.points}}p
+      </p>
+      <p *ngIf="(choice.selected == false && choice.correct == true)"
+        style="color:red">
+        Choice {{choice.values[0]}} was correct!  {{choice.points}}p
+      </p>
+      <p *ngIf="choice.selected == true && choice.correct == true" style="color:green">
+        Choice {{choice.values[0]}} is correct!  {{choice.points}}p
+      </p>
     </div>
+    <p>{{taskAnswer.explanation}}</p>
+    
   </mat-radio-group>
 </div>

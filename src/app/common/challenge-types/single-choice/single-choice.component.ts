@@ -29,11 +29,15 @@ export class SingleChoiceComponent implements OnInit {
   }
 
   submitAnswer() {
+    this.itemAnswer.taskAnswers = new Array();
     this.itemAnswer.challengeItemId = this.challengeItem.id;
     this.challengeItem.challengeItemTaskList.forEach(itemTask => {
       let challengeItemTaskAnswer: ChallengeItemTaskAnswer = new ChallengeItemTaskAnswer();
       challengeItemTaskAnswer.challengeItemTaskId = itemTask.id;
-      challengeItemTaskAnswer.selectedChoicesIds.push(itemTask.selectedChoice[0].values[0].choiceItemId);
+      if (itemTask.selectedChoice[0] != null) {
+        challengeItemTaskAnswer.selectedChoicesIds.push(itemTask.selectedChoice[0].values[0].choiceItemId);
+      }
+
       this.itemAnswer.taskAnswers.push(challengeItemTaskAnswer);
     });
     this.challengeItemAnswerEmitter.emit(this.itemAnswer);
@@ -52,9 +56,9 @@ export class SingleChoiceComponent implements OnInit {
     this.challengeItem.challengeItemTaskList.forEach(challengeItemTask => {
       challengeItemTask.choiceList.forEach(choice => {
         choice.values.forEach(value => {
-          if(value.choiceItemId == choiceValue.choiceItemId){
-              currentChoice = choice;
-              currentItemTask = challengeItemTask;
+          if (value.choiceItemId == choiceValue.choiceItemId) {
+            currentChoice = choice;
+            currentItemTask = challengeItemTask;
           }
         })
       })

@@ -1,6 +1,6 @@
 <div class="h5">{{challengeItem.description}}</div>
 <br>
-<div *ngIf="!validated">
+<div *ngIf="!validated" class="d-flex flex-column align-items-center">
   <div *ngFor="let itemTask of challengeItem.challengeItemTaskList">
     <div>{{itemTask.question}}</div>
     <div *ngFor="let choice of itemTask.choiceList">
@@ -10,21 +10,25 @@
   </div>
 </div>
 
-<div *ngIf="validated">
-  <div *ngFor="let taskAnswer of validatedAnswer.taskAnswers">
-    <div>{{taskAnswer.question}}</div>
+<div *ngIf="validated" class="d-flex flex-column align-items-center">
+  <div *ngFor="let taskAnswer of validatedAnswer.taskAnswers" class="d-flex flex-column">
+    <div>{{taskAnswer.question}}  &nbsp;  Total:  {{taskAnswer.points}}p</div>
     <mat-checkbox *ngFor="let choice of taskAnswer.taskChoiceDtoList" [disabled]=true [checked]="choice.selected">
       {{choice.values[0]}}</mat-checkbox>
-    <img *ngIf="taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
-      src="../../../../assets/check.png">
-    <img *ngIf="!taskAnswer.correct" style="width: 29px; height: 29px; margin-left:3em"
-      src="../../../../assets/wrong.png">
 
-    <div *ngIf="!taskAnswer.correct">
-      Correct values:
-
-      <p *ngFor="let correctChoice of taskAnswer.correctChoices" style="color: red;">{{correctChoice.choiceValueDtoList[0].value}}</p>
-      <p>{{taskAnswer.explanation}}</p>
+    <div *ngFor="let choice of taskAnswer.taskChoiceDtoList">
+      <p *ngIf="(choice.selected == true && choice.correct == false)"
+        style="color:red">
+        Choice {{choice.values[0]}} is wrong!  {{choice.points}}p
+      </p>
+      <p *ngIf="(choice.selected == false && choice.correct == true)"
+        style="color:red">
+        Choice {{choice.values[0]}} was correct!   {{choice.points}}p
+      </p>
+      <p *ngIf="choice.selected == true && choice.correct == true" style="color:green">
+        Choice {{choice.values[0]}} is correct!   {{choice.points}}p
+      </p>
     </div>
+    <p>{{taskAnswer.explanation}}</p>
   </div>
 </div>

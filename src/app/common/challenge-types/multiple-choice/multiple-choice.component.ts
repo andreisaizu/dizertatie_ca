@@ -27,6 +27,7 @@ export class MultipleChoiceComponent implements OnInit {
   }
 
   submitAnswer() {
+    this.itemAnswer.taskAnswers = new Array();
     this.itemAnswer.challengeItemId = this.challengeItem.id;
     this.challengeItem.challengeItemTaskList.forEach(itemTask => {
       let challengeItemTaskAnswer: ChallengeItemTaskAnswer = new ChallengeItemTaskAnswer();

@@ -1,38 +1,128 @@
+<div class="ol-4">
+    <h4>Sistemul de tipuri</h4>
 
-<div class="pl-4">
+    <p>La definirea unei variabile trebuie ales tipul de date care se potriveste cel mai bine cu cerinţele.
+        Tipul de date determină care sunt valorile permise pentru acea variabilă.
+        C# suporta tipuri de bază, cum ar fi <b>int</b>, <b>long</b>, <b>bool</b>, etc. . Aceste tipuri mai sunt numite
+        și tipuri valoare. C# suporta de asemenea și tipuri mai complexe și
+        puternice, numite tipuri referință.</p>
 
-    <h4>VARIABLE</h4>
-    <br />
-    <br />
-    <br />
-    <p>The variable is nothing but a name given to a data value.</p>
-    <p>As the name suggests, the contents of a variable can vary, i.e., you can change the value of a variable at any
-        time.</p>
-    <p>In JAVA, a variable is always defined with a data type. </p>
-    <p>The following is the syntax variable declaration and initialization.</p>
-    <p>A variable can be declared and initialized later or it can be declared and initialized at the same time. </p>
+    <h5>Tipuri valoare</h5>
+    <p>Variabilele tip valoare sunt tipurile de bază suportate de limbaj, precum <b>char</b>
+        sau <b>int</b> . Ele reprezintă cele mai simple tipuri din C#. Variabilele de acest tip
+        conțin direct datele în variabilă.</p>
 
-    <br />
+    <h5>Tipuri referință</h5>
+    <p>
+        Variabilele de tip referință conțin doar o referință cu privire la zona unde sunt
+        stocate datele și nu datele direct. Ați avut deja de a face cu astfel de tipuri de
+        variabile. Vectorii, stringurile și excepțiile sunt toate tipuri referință ce sunt
+        implementate în complilatorul C# și în platforma .NET. Clasele, fie deja definite
+        sau definite de utilizator, sunt de asemenea variabile tip referință.
+    </p>
 
-    <h6>Example: Variable Declaration</h6>
-    <p>String message;// value can be assigned after it declared </p>
-    <p>message = "Hello World!!";</p>
 
-    <h6>Example: Invalid Variable Assignment</h6>
-    <p>String message = "Hello World!!";</p>
-    <p>int i = message; // compile time error</p>
+    <h5>Denumirea variabilelor</h5>
 
-    <br />
-    <h5>Points to Remember :</h5>
-    <p>The variable is a name given to a data value.</p>
-    <p>A variable holds the value of specific data type e.g string, int, float etc.</p>
-    <p>A variable can be declared and initialized in separate statements and also in the single statement.</p>
-    <p>The value of a variable can be changed at any time throughout out the program as long as it is accessible.</p>
-    <p>Multiple variables can be defined separated by comma (,) in a single or multiple line till semicolon(;).</p>
-    <p>A value must be assigned to a variable before using it otherwise it will give compile time error.</p>
 
-    <div *ngIf="!fromDialog">
-        <button mat-menu-item (click)="goToChallenge()">Go to challenges!</button>
-    </div>
+    <b>Reguli:</b>
+    <ul>
+        <li>Denumirea unei variabile să înceapă cu o literă sau underscore</li>
+        <li>După primul caracter să se folosească doar cifre, litere sau underscore</li>
+        <li>Să nu se foloseacă cuvintele rezervate în denumire (abstract , base, bool, default, if, finally)</li>
+        <li>Dacă nu se vor respecta regulile de mai sus vor rezulta erori de compilare</li>
+    </ul>
 
+
+
+    <h5>Declararea de variabile și atribuirea lor</h5>
+    <p>Variabilele care sunt declarate in metode, proprietati sau indexari sunt numite variabile locale. Definirea unei
+        variabile presupune specificarea tipului si numelui acesteia.</p>
+    <ul>
+        <li>Exemplu: <b>int itemCount;</b></li>
+    </ul>
+    <p>Se pot declara mai multe variabile in aceeasi linie ed cod separate prin virgulă.</p>
+    <ul>
+        <li>Exemplu: <b>int itemCount, numărAngajaţi</b></li>
+    </ul>
+
+    <p>Pentru a atribui o valoare unei variabile se folosesc operatorii de atribuire.</p>
+
+    <mat-card style="width: 350px;">
+        <p>int employeeNumber;</p>
+        <p>employeeNumber = 23;</p>
+    </mat-card>
+
+    <p>O variabilă poate fi, de asemenea, iniţializată la declararea acesteia</p>
+    <mat-card style="width: 350px;">
+        <p>int employeeNumber = 23;</p>
+    </mat-card>
+
+    <h4>Clasa String</h4>
+
+    <p>>În C#, tipul string
+        este folosit pentru a procesa caractere Unicode multiple.
+        Pentru comparație, tipul char este un tip valoare ce se ocupă cu un singur
+        caracter.</p>
+    <p>Numele tipului, <b>string</b> , este prescurtare pentru clasa <b>System.String</b>.
+        Compilatorul se ocupă de recunoașterea formei prescurtate, astfel încât oricare
+        dintre cele două forme poate fi folosită. </p>
+    <p>Clasa String reprezintă un șir de caractere ce nu poate fi modificat. Metode ce
+        par să modifice valoarea unui string întorc de fapt valoarea unei noi instanțe ce
+        conține modificările.</p>
+    <p>Clasa
+        String oferă un set foarte mare de metode.</p>
+
+    <b>Proprietatea Length</b>
+    <p>
+        Întoarce
+        un întreg ce reprezintă lungimea stringului, ca în exemplu:</p>
+    <mat-card style="width: 350px;">
+        <p> string msg = "abcde"</p>
+        <p>int slen = msg.Length ; // 5</p>
+    </mat-card>
+
+    <b>Metoda Equals</b>
+    <p> Clasa System.String conține o metodă numită Equals, care poate fi folosită
+        pentru a compara două stringuri, pentru a determina dacă sunt egale. Metoda
+        întoarce o valoare booleană, true dacă cele două sunt egale și false altfel.
+        Această metodă este supraîncărcată și poate fi folosită fie ca o metodă a unei
+        instanțe, fie static:</p>
+    <mat-card style="width: 450px;">
+        <p>string s1 = "Welcome";</p>
+        <p>string s2 = "Welcome";</p>
+        <p>if (s1.Equals(s2))</p>
+        <p>&emsp;Console.WriteLine("The strings are the same");</p>
+        <p>if (String.Equals (s1, s2)</p>
+        <p>&emsp;Console.WriteLine("The strings are the same");</p>
+    </mat-card>
+
+
+
+    <h4>Enumeraţii</h4>
+    <p>Enumeraţiile reprezintă o modalitate eficientă de a defini un set de
+        constante ce pot fi atribuite unei variabile.</p>
+    <b>Declararea unei enumeraţii</b>
+    <ul>
+        <li>Pentru a declara o enumeraţie se utilizează cuvântul cheie <b>enum</b>
+            urmat de numele variabilei şi valorile iniţiale</li>
+        <li>De exemplu, enumeraţia următoare defineşte trei constante întregi,
+            numite valorile enumeraţiei
+            <mat-card style="width: 450px;">
+                <p>enum Color {{ '{' }}Red, Green, Blue{{ '}' }};</p>
+            </mat-card>
+        </li>
+        <li>Valorile enumeraţiei încep întotdeauna de la 0. Prin urmare Red
+            corespunde valorii 0, Green valorii 1, iar Blue valorii 2.</li>
+    </ul>
+    <b>Utilizarea unei enumeraţii</b>
+    <ul>
+        <li>
+            <p>O varibilă de tip <b>Color</b> se poate declara în felul următor:</p>
+            <mat-card style="width: 450px;">
+                <p>Color colorPalette;</p>
+                <p>colorPalette = Color.Red</p>
+            </mat-card>
+        </li>
+    </ul>
 </div>
