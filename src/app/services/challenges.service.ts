@@ -15,6 +15,10 @@ export class ChallengesService {
 
     constructor(private apiService: ApiService) { }
 
+    getChallengeById(challengeId: number): Observable<Challenge> {
+        return this.apiService.get(`${this.endpoint}/${challengeId}`);
+    }
+    
     getChallengeByTemplate(template: string): Observable<Challenge> {
         if (template == undefined) template = "";
         return this.apiService.get(`${this.endpoint}/byTemplate/${template}`);

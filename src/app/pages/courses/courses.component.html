@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <div class="page-header clear-filter" filter-color="orange">
+        <div class="page-header-image rellax-header" data-rellax-speed="-7"
+            style="background-image: url('assets/img/header.jpg');">
+
+        </div>
+        <div class="container pt-5 mt-5 pr-5">
+            <div class="row">
+                <div *ngFor="let course of courseList" class="col-md-4">
+                    <div>
+                        <h4 class="title">{{course.title}}</h4>
+                        <hr />
+                        <div class="d-flex flex-row ">
+                            <div class="d-flex flex-column pr-5">
+                                <p class="category text-primary h5">Lessons</p>
+                                <div class="d-flex flex-column category">
+                                    <p *ngFor="let lesson of course.lessonList" class="d-flex" (click)="goToComponent('lessons', lesson.id)">{{lesson.title}}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p class="category text-primary h5">Challenges</p>
+                                <div class="d-flex flex-column category">
+                                    <p *ngFor="let challenge of course.challengeList" class="d-flex" (click)="goToComponent('challenges', challenge.id)">{{challenge.title}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

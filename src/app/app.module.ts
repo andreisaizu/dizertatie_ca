@@ -11,11 +11,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { LoginComponent } from './pages/login/login/login.component';
+import { CoursesComponent } from './pages/courses/courses.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
+        LoginComponent,
+        CoursesComponent
     ],
     imports: [
         HttpClientModule,

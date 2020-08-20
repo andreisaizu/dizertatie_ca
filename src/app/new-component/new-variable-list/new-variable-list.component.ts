@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Variable } from 'src/app/common/variable';
-import { VariableType } from 'src/app/common/variableTypeEnum';
+import { Variable } from 'app/common/variable';
 
 @Component({
   selector: 'app-new-variable-list',

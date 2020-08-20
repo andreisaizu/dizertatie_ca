@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Variable } from 'src/app/common/variable';
-import { VariableType } from 'src/app/common/variableTypeEnum';
 import { v4 as uuid } from 'uuid';
+import { Variable } from 'app/common/variable';
+import { VariableType } from 'app/common/variableTypeEnum';
 
 @Component({
   selector: 'app-new-variable',

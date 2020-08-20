@@ -11,17 +11,21 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { BasicNotionLessonComponent } from './components/pages/lessons/basic-notion-lesson/basic-notion.component';
 import { VariableLessonComponent } from './components/pages/lessons/variable-lesson/variable-lesson.component';
 import { BasicNotionChallengeComponent } from './components/pages/challenges/basic-notion-challenge/basic-notion-challenge.component';
+import { CoursesComponent } from './pages/courses/courses.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
     { path: 'index',                component: HomeComponent },
+    { path: 'courses',                component: CoursesComponent },
+    { path: 'login',                component: LoginComponent },
     { path: 'nucleoicons',          component: NucleoiconsComponent },
     { path: 'examples/landing',     component: LandingComponent },
     { path: 'examples/login',       component: LoginComponent },
     { path: 'examples/profile',     component: ProfileComponent },
+    { path: 'lessons/:id',component: VariableLessonComponent},
     { path: 'lessons/basic-notions',component: BasicNotionLessonComponent},
     { path: 'lessons/variable',component: VariableLessonComponent},
-    { path: 'challenges/basic-notions',component: BasicNotionChallengeComponent},
+    { path: 'challenges/:id',component: BasicNotionChallengeComponent},
 ];
 
 @NgModule({

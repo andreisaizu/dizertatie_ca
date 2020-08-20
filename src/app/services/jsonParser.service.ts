@@ -8,6 +8,9 @@ import { Injectable } from "@angular/core";
 import { TrueFalseChallenge } from "../common/challenge/trueFalseChallenge";
 import { CorrectOrderChallenge } from "../common/challenge/correctOrderChallenge";
 import { ChoiceValue } from "../common/challenge/choiceValue";
+import { CourseDto } from 'app/common/course/coursedto';
+import { Course } from 'app/common/course/course';
+import { LoginResponse } from 'app/common/login/loginresponse';
 
 @Injectable({
   providedIn: "root"
@@ -109,5 +112,11 @@ export class JsonParserService {
     challenge.id = jsonObj["id"];
     challenge.challengeItemList = this.getChallengeItemList(jsonObj["challengeItemList"], challenge.id);
     return challenge;
+  }
+
+  deserializeCourseList(result: Object): Array<Course>{
+    // let coursedto = new CourseDto();
+    // coursedto.courseList = result["courseList"];
+    return result["courseList"];
   }
 }

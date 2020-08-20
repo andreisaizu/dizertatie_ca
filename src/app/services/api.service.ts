@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams, HttpErrorResponse} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, share, timeout, tap} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, share, timeout, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService{
-  api_url = "http://localhost:8090"; 
+export class ApiService {
+  api_url = "http://localhost:8090";
 
   constructor(
     private http: HttpClient
@@ -36,7 +36,7 @@ export class ApiService{
   }
 
   getAny(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${this.api_url}${path}`, {params})
+    return this.http.get(`${this.api_url}${path}`, { params })
       .pipe(catchError(this.formatErrors));
   }
 
@@ -46,7 +46,10 @@ export class ApiService{
   }
 
   get<T>(path: string, params: HttpParams = new HttpParams()): Observable<T> {
-    return this.http.get<T>(`${this.api_url}${path}`, {params})
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', sessionStorage.getItem("username"));
+
+    return this.http.get<T>(`${this.api_url}${path}`, {headers, params })
       .pipe(catchError(this.formatErrors));
   }
 
@@ -61,12 +64,12 @@ export class ApiService{
   // }
 
   getBlob(path: string): Observable<any> {
-    return this.http.get<Blob>(`${this.api_url}${path}`, {responseType: 'blob' as 'json'})
+    return this.http.get<Blob>(`${this.api_url}${path}`, { responseType: 'blob' as 'json' })
       .pipe(catchError(this.formatBlobErrors));
   }
 
   getBlobByPostWithObject(path: string, body: Object = {}): Observable<any> {
-    return this.http.post<Blob>(`${this.api_url}${path}`, body, {responseType: 'blob' as 'json'})
+    return this.http.post<Blob>(`${this.api_url}${path}`, body, { responseType: 'blob' as 'json' })
       .pipe(catchError(this.formatBlobErrors));
   }
 

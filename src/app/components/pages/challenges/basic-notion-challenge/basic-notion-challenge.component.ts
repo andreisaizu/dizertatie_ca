@@ -34,24 +34,28 @@ export class BasicNotionChallengeComponent implements OnInit {
   style1: boolean = false;
   style2: boolean = true;
 
-  validated:boolean = false;
+  validated: boolean = false;
 
   challenge: Challenge = new Challenge();
 
   challengeAnswers: ChallengeAnswer = new ChallengeAnswer();
 
-  constructor(private challengesService: ChallengesService, private jsonParserService: JsonParserService) { }
+  constructor(private challengesService: ChallengesService, private jsonParserService: JsonParserService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     let fromLessonWindow: boolean = window.history.state.fromLesson;
 
-    this.challengesService.getVariableChallenge().subscribe(result => {
-      if (fromLessonWindow == null) {
-        // this.openDialog();
-      }
+    // this.challengesService.getVariableChallenge().subscribe(result => {
+    this.activatedRoute.params.subscribe(params => {
+      let challengeId = params['id'];
+      this.challengesService.getChallengeById(challengeId).subscribe(result => {
+        if (fromLessonWindow == null) {
+          // this.openDialog();
+        }
 
-      this.challenge = this.jsonParserService.serializeChallengeObject(result);
-      this.challengeAnswers.challengeId = this.challenge.id;
+        this.challenge = this.jsonParserService.serializeChallengeObject(result);
+        this.challengeAnswers.challengeId = this.challenge.id;
+      });
     });
   }
 
