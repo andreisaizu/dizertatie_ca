@@ -17,8 +17,20 @@ export class CoursesService {
         return this.apiService.get(`${this.endpoint}`);
     }
 
-    getCourseById(courseId: number):Observable<Course> {
+    getNotEnrolledCourses(): Observable<CourseDto> {
+        return this.apiService.get(`${this.endpoint}/not-enrolled`);
+    }
+
+    getCourseById(courseId: number): Observable<Course> {
         return this.apiService.get(`${this.endpoint}/${courseId}`);
+    }
+
+    createCourse(course: Course) {
+        return this.apiService.post(`${this.endpoint}/new-course`, course);
+    }
+
+    enrollToCourse(courseId: number) {
+        return this.apiService.put(`${this.endpoint}/${courseId}/enroll`);
     }
 
 }

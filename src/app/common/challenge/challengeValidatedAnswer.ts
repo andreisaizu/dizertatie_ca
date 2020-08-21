@@ -3,6 +3,7 @@ import { ChallengeValidatedItemAnswer } from "./challengeValidatedItemAnswer";
 
 export class ChallengeValidatedAnswer {
     challengeId: number;
+    totalScore:number;
     challengeItemType:String;
     challengeItemAnswers: Array<ChallengeValidatedItemAnswer>;
     constructor() {

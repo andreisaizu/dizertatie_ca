@@ -110,6 +110,7 @@ export class JsonParserService {
     var jsonObj = JSON.parse(stringResult);
     let challenge: Challenge = new Challenge();
     challenge.id = jsonObj["id"];
+    challenge.title = jsonObj["title"];
     challenge.challengeItemList = this.getChallengeItemList(jsonObj["challengeItemList"], challenge.id);
     return challenge;
   }

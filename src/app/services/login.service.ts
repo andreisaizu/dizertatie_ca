@@ -16,7 +16,7 @@ export class LoginService {
     constructor(private apiService: ApiService, private router: Router) { }
 
     login(loginDto: LoginDto): void {
-
+        sessionStorage.clear();
         this.sendLoginRequest(loginDto).subscribe(loginResponse => {
             if (loginResponse.valid) {
 

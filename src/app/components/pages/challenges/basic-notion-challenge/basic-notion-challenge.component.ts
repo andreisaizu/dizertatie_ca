@@ -11,6 +11,8 @@ import { ChallengeAnswer } from '../../../../common/challenge/challengeAnswer';
 import { ChallengeItem } from '../../../../common/challenge/challengeItem';
 import { ChallengeItemAnswer } from '../../../../common/challenge/challengeItemAnswer';
 import { ChallengeValidatedItemAnswer } from '../../../../common/challenge/challengeValidatedItemAnswer';
+import { ChallengeAttempt } from 'app/common/challenge/challengeAttempt';
+import { ChallengesAttemptService } from 'app/services/challengesAttemptService';
 
 @Component({
   selector: 'app-basic-notion-challenge',
@@ -33,6 +35,7 @@ export class BasicNotionChallengeComponent implements OnInit {
 
   style1: boolean = false;
   style2: boolean = true;
+  totalScore: number;
 
   validated: boolean = false;
 
@@ -40,7 +43,9 @@ export class BasicNotionChallengeComponent implements OnInit {
 
   challengeAnswers: ChallengeAnswer = new ChallengeAnswer();
 
-  constructor(private challengesService: ChallengesService, private jsonParserService: JsonParserService, private activatedRoute: ActivatedRoute) { }
+  challengeAttempts:Array<ChallengeAttempt> = new Array<ChallengeAttempt>();
+
+  constructor(private challengesService: ChallengesService, private challengesAttemptService: ChallengesAttemptService, private jsonParserService: JsonParserService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     let fromLessonWindow: boolean = window.history.state.fromLesson;
@@ -52,6 +57,10 @@ export class BasicNotionChallengeComponent implements OnInit {
         if (fromLessonWindow == null) {
           // this.openDialog();
         }
+        
+        this.challengesAttemptService.getChallengeAttemptsByChallengeId(challengeId).subscribe(result =>{
+          this.challengeAttempts = result.challengeAttemptList;
+        });
 
         this.challenge = this.jsonParserService.serializeChallengeObject(result);
         this.challengeAnswers.challengeId = this.challenge.id;
@@ -75,7 +84,7 @@ export class BasicNotionChallengeComponent implements OnInit {
     this.singleChoiceComponent.submitAnswer();
     this.multipleChoiceComponent.submitAnswer();
     this.trueFalseComponent.submitAnswer();
-    this.correctOrderComponent.submitAnswer();
+    // this.correctOrderComponent.submitAnswer();
     this.sendAnswers();
   }
 
@@ -83,13 +92,14 @@ export class BasicNotionChallengeComponent implements OnInit {
     this.validated = true;
     this.singleChoiceComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'SINGLE_CHOICE')[0]);
     this.multipleChoiceComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'MULTIPLE_CHOICE')[0]);
-    // this.trueFalseComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'TRUE_FALSE')[0]);
-    this.correctOrderComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'CORRECT_ORDER')[0]);
+    this.trueFalseComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'TRUE_OR_FALSE')[0]);
+    //this.correctOrderComponent.receiveAnswer(challengeItemAnswers.filter(item => item.type == 'CORRECT_ORDER')[0]);
   }
 
   sendAnswers() {
     this.challengesService.sendAnswers(this.challengeAnswers).subscribe(res => {
       this.receiveAnswer(res.challengeItemAnswers);
+      this.totalScore = res.totalScore;
     });
   }
 

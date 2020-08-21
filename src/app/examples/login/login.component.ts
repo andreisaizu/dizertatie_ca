@@ -21,8 +21,6 @@ export class LoginComponent implements OnInit {
 
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.add('navbar-transparent');
-
-        sessionStorage.setItem('token', '');
     }
 
     model: LoginDto = new LoginDto();

@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         
     
-        this.fbLibrary();
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
             if (window.outerWidth > 991) {
@@ -27,7 +26,6 @@ export class AppComponent implements OnInit {
             }else{
                 window.document.activeElement.scrollTop = 0;
             }
-            this.navbar.sidebarClose();
 
             this.renderer.listen('window', 'scroll', (event) => {
                 const number = window.scrollY;

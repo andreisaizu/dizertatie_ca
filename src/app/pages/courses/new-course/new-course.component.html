@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <div class="clear-filter pl-3" filter-color="orange"
+        style="background-image: url('assets/img/header.jpg'); min-height: 1000px; background-size: cover">
+        <div class="mb-5">fhdfgd</div>
+
+        
+        <div class="d-flex flex-row justify-content-center pt-4">
+            <div class="d-flex"><h3 style="color:whitesmoke">New course title: &nbsp;&nbsp;</h3></div>
+            <div class="d-flex">
+                <input style="background-color: white; height:33px;" type="text" [(ngModel)]="course.title"
+                    class="form-control d-flex" required/>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center">
+            <div class="d-flex">
+                <button class="btn btn-neutral btn-round btn-round" type="button"
+                (click)="createCourse()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

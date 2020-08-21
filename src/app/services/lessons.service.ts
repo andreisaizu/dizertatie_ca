@@ -14,8 +14,16 @@ export class LessonsService {
 
     constructor(private apiService: ApiService) { }
 
-    getLessonById(lessonId: number):Observable<LessonDto> {
+    getLessonById(lessonId: number): Observable<LessonDto> {
         return this.apiService.get(`${this.endpoint}/${lessonId}`);
+    }
+    
+    updateLessonById(lesson: LessonDto): void {
+        this.apiService.put(`${this.endpoint}/${lesson.id}`, lesson).subscribe();
+    }
+
+    createLesson(lesson: LessonDto): void{
+        this.apiService.post(`${this.endpoint}/new-lesson`, lesson).subscribe();
     }
 
 }

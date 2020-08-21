@@ -1,0 +1,6 @@
+.transparent{
+        background-color: rgba(222,222,222, .3) !important;
+        box-shadow: none;
+        color: #ffffff;
+        padding-top: 20px;
+    }

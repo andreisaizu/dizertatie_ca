@@ -9,10 +9,10 @@ import { LessonsService } from 'app/services/lessons.service';
   styleUrls: ['./variable-lesson.component.css']
 })
 export class VariableLessonComponent implements OnInit {
-
-  edit:boolean = false;
+  edit: boolean = false;
+  canEdit: boolean = false;
   lesson: LessonDto = new LessonDto();
-  constructor(private activatedRoute: ActivatedRoute, private lessonsService : LessonsService) { }
+  constructor(private activatedRoute: ActivatedRoute, private lessonsService: LessonsService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -20,11 +20,20 @@ export class VariableLessonComponent implements OnInit {
       this.lessonsService.getLessonById(lessonId).subscribe(result => {
         this.lesson = result;
       });
+      let role = sessionStorage.getItem('role');
+      if (role == 'TEACHER') {
+        this.canEdit = true;
+      }
     });
   }
 
-  editLesson(){
+  editLesson() {
     this.edit = !this.edit;
+  }
+
+  saveLesson() {
+    this.lessonsService.updateLessonById(this.lesson);
+    this.edit = false;
   }
 
 }

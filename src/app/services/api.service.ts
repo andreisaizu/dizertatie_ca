@@ -74,9 +74,13 @@ export class ApiService {
   }
 
   put(path: string, body: Object = {}): Observable<any> {
+    
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', sessionStorage.getItem("username"));
+
     return this.http.put(
       `${this.api_url}${path}`,
-      body
+      body, {headers}
     ).pipe(catchError(this.formatErrors));
   }
 

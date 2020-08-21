@@ -14,11 +14,11 @@ export class LoginComponent implements OnInit {
   model: LoginDto;
 
   ngOnInit() {
-    sessionStorage.setItem('token', '');
-    sessionStorage.setItem('username', '');
+    
   }
 
   login() {
+    sessionStorage.clear();
     this.loginService.login(this.model);
   }
 

@@ -1,31 +1,79 @@
 <div class="wrapper">
     <div class="clear-filter " filter-color="orange"
-        style="background-image: url('assets/img/bg8.jpg'); background-size: cover">
+        style="background-image: url('assets/img/header.jpg'); min-height: 1000px; background-size: cover">
         <div class="page-header-image rellax-header" data-rellax-speed="-7">
         </div>
 
         <div class="mt-5 pt-5">
-            <button class="btn btn-primary btn-simple btn-round" type="button"  (click)="editLesson()">Edit Lesson</button>
+
         </div>
 
-        <div *ngIf="!edit" style="padding-left: 460px; padding-top: 100px; padding-bottom: 60px;  color: white;">
-            <div style="width: 800px; background-color:#0F2851; padding: 25px; border-width: 3px; border-color: white; border-style: solid" [innerHtml]="lesson.content">
+        <div class="d-flex flex-column pt-5">
+            
+            <div class="text-info d-flex flex-row justify-content-center">
+                <div *ngIf="!edit" class="d-flex ">
+                    <h2 style="color:whitesmoke">{{lesson.title}}</h2>
+                </div>
+                <div *ngIf="edit" class="form-group d-flex flex-row mb-3" style="width: 280px; color: white;">
+                    <h3 class="d-flex pr-2" style="color:whitesmoke">Title:</h3>
+                    <input style="background-color: white; height:33px;" type="text" [(ngModel)]="lesson.title"
+                        placeholder="Lesson Title" class="form-control d-flex" />
+                </div>
+            </div>
+
+            <div class="d-flex flex-row justify-content-center">
+                <div class="d-flex flex-column" *ngIf="!edit && canEdit"><button
+                        class="btn btn-neutral btn-round btn-round" type="button" (click)="editLesson()">Edit
+                        Lesson</button></div>
+                <div class="d-flex flex-column"></div>
+            </div>
+            <div *ngIf="!edit" style="padding-left: 460px; padding-top: 10px; padding-bottom: 60px;  color: white;"
+                class="d-flex">
+                <div style="width: 800px; padding: 25px; border-width: 3px; border-color: white; border-style: solid"
+                    [innerHtml]="lesson.content">
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row" *ngIf="edit">
+                        <button class="btn btn-neutral btn-round btn-round d-flex " type="button"
+                            (click)="saveLesson()">Save</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="edit" style="width: 1400px; padding-left: 400px; padding-bottom: 60px; ">
+                <ckeditor style="width: 100px; height: 800px; padding: 25px; " [(ngModel)]="lesson.content"
+                    [config]="{allowedContent: false,
+                forcePasteAsPlainText: true,
+                height:600,
+                width:1000,
+                font_names: 'Arial;Times New Roman;Verdana',
+                toolbarGroups: [
+                  { name: 'document', groups: ['mode', 'document', 'doctools'] },
+                  { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                  { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+                  { name: 'forms', groups: ['forms'] },
+                  '/',
+                  { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                  { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+                  { name: 'links', groups: ['links'] },
+                  { name: 'insert', groups: ['insert'] },
+                  '/',
+                  { name: 'styles', groups: ['styles'] },
+                  { name: 'colors', groups: ['colors'] },
+                  { name: 'tools', groups: ['tools'] },
+                  { name: 'others', groups: ['others'] },
+                  { name: 'about', groups: ['about'] }
+                ],
+                removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,Outdent,Indent,CreateDiv,Blockquote,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Maximize,ShowBlocks,About'}">
+                </ckeditor>
             </div>
         </div>
 
-        <div class="form-group" *ngIf="edit" style="width: 800px; background-color:#0F2851; padding: 25px; border-width: 3px; border-color: white; border-style: solid padding-left: 460px; padding-top: 100px; padding-bottom: 60px;  color: white;">
 
-            <input style="width: 800px; background-color:#0F2851; padding: 25px; border-width: 3px; border-color: white; border-style: solid padding-left: 460px; padding-top: 100px; padding-bottom: 60px;  color: white;" type="text" [(ngModel)]="lesson.content" class="form-control" />
-        </div>
 
-        <mat-form-field style="width: 800px; background-color:#0F2851; padding: 25px; border-width: 3px; border-color: white; border-style: solid padding-left: 460px; padding-top: 100px; padding-bottom: 60px;  color: white;" type="text" [(ngModel)]="lesson.content" class="form-control" >
-            <mat-label>Autosize textarea</mat-label>
-            <textarea matInput
-                      cdkTextareaAutosize
-                      #autosize="cdkTextareaAutosize"
-                      cdkAutosizeMinRows="1"
-                      cdkAutosizeMaxRows="5"></textarea>
-          </mat-form-field>
+
+
 
     </div>
 </div>

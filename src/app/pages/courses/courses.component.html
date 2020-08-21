@@ -1,29 +1,142 @@
 <div class="wrapper">
-    <div class="page-header clear-filter" filter-color="orange">
-        <div class="page-header-image rellax-header" data-rellax-speed="-7"
-            style="background-image: url('assets/img/header.jpg');">
+    <div class="page-header clear-filter">
+
+        <div class="page-header-image" data-rellax-speed="-7"
+            style="background-image: url('assets/img/header.jpg'); min-height: 1500px;">
 
         </div>
-        <div class="container pt-5 mt-5 pr-5">
-            <div class="row">
-                <div *ngFor="let course of courseList" class="col-md-4">
+
+        <div *ngIf="!canEdit" class="row" style="padding-top: 75px;">
+            <div class="d-flex flex-column col-8" style="padding-left: 200px;">
+                <div class="d-flex">
+                    <h3 class="text-primary">Enrolled courses</h3>
+                </div>
+
+                <div class="d-flex">
                     <div>
-                        <h4 class="title">{{course.title}}</h4>
-                        <hr />
-                        <div class="d-flex flex-row ">
-                            <div class="d-flex flex-column pr-5">
-                                <p class="category text-primary h5">Lessons</p>
-                                <div class="d-flex flex-column category">
-                                    <p *ngFor="let lesson of course.lessonList" class="d-flex" (click)="goToComponent('lessons', lesson.id)">{{lesson.title}}</p>
+                        <div class="row">
+                            <div *ngFor="let course of courseList">
+                                <div style="margin-right: 180px;">
+                                    <h4 class="title">{{course.title}}</h4>
+                                    <hr />
+                                    <div class="d-flex flex-row">
+                                        <div class="d-flex flex-column pr-5">
+                                            <p class="category text-primary h5">Lessons</p>
+                                            <div class="d-flex flex-column category">
+                                                <p *ngFor="let lesson of course.lessonList" class="d-flex"
+                                                    style="color: whitesmoke; cursor: pointer;"
+                                                    (click)="goToComponent('lessons', lesson.id)">
+                                                    {{lesson.title}}</p>
+                                                <button *ngIf="canEdit"
+                                                    class="btn btn-primary btn-simple btn-round d-flex " type="button"
+                                                    (click)="addLesson(course.id)">Add Lesson</button>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-column  pr-5">
+                                            <p class="category text-primary h5">Challenges</p>
+                                            <div class="d-flex flex-column category">
+                                                <p *ngFor="let challenge of course.challengeList" class="d-flex"
+                                                    style="color: whitesmoke; cursor: pointer;"
+                                                    (click)="goToComponent('challenges', challenge.id)">
+                                                    {{challenge.title}}
+                                                </p>
+                                                <button *ngIf="canEdit"
+                                                    class="btn btn-primary btn-simple btn-round d-flex " type="button"
+                                                    (click)="addChallenge(course.id)">Add Challenge</button>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-column" *ngIf="canEdit">
+                                            <p class="category text-primary h5">Students</p>
+                                            <div class="d-flex flex-column category">
+                                                <p *ngFor="let account of course.accountList" style="color:whitesmoke;"
+                                                    class="d-flex">{{account.firstName}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="d-flex flex-column">
-                                <p class="category text-primary h5">Challenges</p>
-                                <div class="d-flex flex-column category">
-                                    <p *ngFor="let challenge of course.challengeList" class="d-flex" (click)="goToComponent('challenges', challenge.id)">{{challenge.title}}
-                                    </p>
-                                </div>
+                            <div class="d-flex flex-row justify-content-center">
+                                <button *ngIf="canEdit" style="width:200px; font-size: large;"
+                                    class="btn btn-primary btn-simple btn-round" type="button" (click)="addCourse()">Add
+                                    New
+                                    Course</button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column col-4" style="padding-left: 200px;">
+                <div class="d-flex">
+                    <h3 class="text-primary">Other courses</h3>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="d-flex flex-column">
+
+                        <div class="d-flex flex-row justify-content-between" style="color: whitesmoke;"
+                            *ngFor="let notEnrolledCourse of notEnrolledCourseList">
+
+                            <p class="d-flex align-items-end mr-5">{{notEnrolledCourse.title}}</p>
+                            <div class="d-flex ">
+                                <button class="btn btn-neutral btn-simple btn-round d-flex" type="button"
+                                    (click)="enrollToCourse(notEnrolledCourse.id)">Enroll</button>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="canEdit" style="padding-top: 75px;">
+            <div class="d-flex" style="padding-left: 200px;">
+                <div>
+                    <div class="row">
+                        <div *ngFor="let course of courseList">
+                            <div style="margin-right: 180px;">
+                                <h4 class="title">{{course.title}}</h4>
+                                <hr />
+                                <div class="d-flex flex-row">
+                                    <div class="d-flex flex-column pr-5">
+                                        <p class="category text-primary h5">Lessons</p>
+                                        <div class="d-flex flex-column category">
+                                            <p *ngFor="let lesson of course.lessonList" class="d-flex"
+                                                style="color: whitesmoke; cursor: pointer;"
+                                                (click)="goToComponent('lessons', lesson.id)">
+                                                {{lesson.title}}</p>
+                                            <button *ngIf="canEdit" class="btn btn-primary btn-simple btn-round d-flex "
+                                                type="button" (click)="addLesson(course.id)">Add Lesson</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column  pr-5">
+                                        <p class="category text-primary h5">Challenges</p>
+                                        <div class="d-flex flex-column category">
+                                            <p *ngFor="let challenge of course.challengeList" class="d-flex"
+                                                style="color: whitesmoke; cursor: pointer;"
+                                                (click)="goToComponent('challenges', challenge.id)">
+                                                {{challenge.title}}
+                                            </p>
+                                            <button *ngIf="canEdit" class="btn btn-primary btn-simple btn-round d-flex "
+                                                type="button" (click)="addChallenge(course.id)">Add Challenge</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column" *ngIf="canEdit">
+                                        <p class="category text-primary h5">Students</p>
+                                        <div class="d-flex flex-column category">
+                                            <p *ngFor="let account of course.accountList" style="color:whitesmoke;"
+                                                class="d-flex">{{account.firstName}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-center" style="width:500px;">  
+                            <button *ngIf="canEdit" style="width:200px; font-size: large;"
+                                class="btn btn-primary btn-simple btn-round" type="button" (click)="addCourse()">Add New Course</button>
                         </div>
                     </div>
                 </div>

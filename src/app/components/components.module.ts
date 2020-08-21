@@ -59,9 +59,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
     imports: [
+        CKEditorModule,
         CommonModule,
         FormsModule,
         NgbModule,

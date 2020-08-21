@@ -21,9 +21,9 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="https://www.creative-tim.com/product/now-ui-kit-angular" target="_blank">
+          <a class="nav-link" target="_blank">
             <i class="now-ui-icons users_single-02"></i>
-            <p>{{loggedUser.firstName}} {{loggedUser.lastName}}</p>
+            <p>{{sessionStorage.getItem('firstName')}} {{sessionStorage.getItem('lastName')}}</p>
           </a>
         </li>
         <li class="nav-item">
