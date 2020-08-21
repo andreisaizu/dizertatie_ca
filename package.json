@@ -33,7 +33,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "ajv": "6.10.0",
     "ajv-keywords": "3.4.0",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.3.1",
     "ckeditor4-angular": "^1.2.2",
     "copy-webpack-plugin": "5.0.1",
     "core-js": "3.6.4",
